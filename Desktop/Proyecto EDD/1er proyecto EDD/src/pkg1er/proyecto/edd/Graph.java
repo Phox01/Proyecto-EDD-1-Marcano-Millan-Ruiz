@@ -9,95 +9,100 @@ package pkg1er.proyecto.edd;
  *
  * @author <Joseph Ruiz EDD Unimet>
  */
-public class Graph implements Grafo {
+public class Graph {
 
-    private boolean dirigido;
-    private int maxNodos;
-    private int numVertices;
-    private ListaAdy lista[];
+    private Almacen First;
+    private Almacen Last;
 
-    public Graph(boolean d, int n) {
-        this.dirigido = d;
-        this.maxNodos = n;
-        this.numVertices = 0;
-        this.lista = new ListaAdy[n];
+    public Graph(Almacen First, Almacen Last) {
+        this.First = null;
+        this.Last = null;
     }
 
-    @Override
-    public void insertar(int x) {
-        
+    public boolean grafoVacio() {
+        return getFirst() == null;
     }
 
-    public void insertar(int i, int j) {
-        if (i > getNumVertices()) {
-            System.out.println("Error, no existe ");
+    public boolean existeVertice(Object dato) {
+        boolean existe = false;
+        if (!grafoVacio()) {
+            Almacen temporal = getFirst();
+            while (temporal != null && !existe) {
+                if (temporal.getDato().toString().equals(dato.toString())) {
+                    existe = true;
+                }
+            }
+            temporal = temporal.getSig();
+        }
+        return existe;
+    }
+
+    public void NuevaArista(Object origen, Object destino, int d) {
+        if (existeVertice(origen) && existeVertice(destino)) {
+            Almacen posicion = getFirst();
+            while (!posicion.getDato().equals(origen.toString())) {
+                posicion = posicion.getSig();
+
+            }
+            posicion.getLista().nuevaAdyacencia(destino, d);
         }
     }
 
-    @Override
-    public void eliminar(int x) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    public void nuevoNodo(Object dato) {
+        if (!existeVertice(dato)) {
+            Almacen nodo = new Almacen(dato);
+            if (grafoVacio()) {
+                setFirst(nodo);
+                setLast(nodo);
 
-    @Override
-    public boolean busqueda(int x) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+            } else {
+                if (dato.toString().compareTo(getFirst().getDato().toString()) <= 0) {
+                    nodo.setSig(getFirst());
+                    setFirst(nodo);
+                } else {
+                    if (dato.toString().compareTo(getLast().getDato().toString()) >= 0) {
+                        getLast().setSig(nodo);
+                        setLast(nodo);
+                    } else {
+                        Almacen temporal = getFirst();
+                        while (dato.toString().compareTo(temporal.getDato().toString()) < 0){
+                            temporal = temporal.getSig();
 
-    /**
-     * @return the dirigido
-     */
-    public boolean isDirigido() {
-        return dirigido;
-    }
-
-    /**
-     * @param dirigido the dirigido to set
-     */
-    public void setDirigido(boolean dirigido) {
-        this.dirigido = dirigido;
-    }
-
-    /**
-     * @return the maxNodos
-     */
-    public int getMaxNodos() {
-        return maxNodos;
-    }
-
-    /**
-     * @param maxNodos the maxNodos to set
-     */
-    public void setMaxNodos(int maxNodos) {
-        this.maxNodos = maxNodos;
+                        }
+                        nodo.setSig(temporal.getSig());
+                        temporal.setSig(nodo);
+                    }
+                }
+            }
+        }
     }
 
     /**
-     * @return the numVertices
+     * @return the First
      */
-    public int getNumVertices() {
-        return numVertices;
+    public Almacen getFirst() {
+        return First;
     }
 
     /**
-     * @param numVertices the numVertices to set
+     * @param First the First to set
      */
-    public void setNumVertices(int numVertices) {
-        this.numVertices = numVertices;
+    public void setFirst(Almacen First) {
+        this.First = First;
     }
 
     /**
-     * @return the lista
+     * @return the Last
      */
-    public ListaAdy[] getLista() {
-        return lista;
+    public Almacen getLast() {
+        return Last;
     }
 
     /**
-     * @param lista the lista to set
+     * @param Last the Last to set
      */
-    public void setLista(ListaAdy[] lista) {
-        this.lista = lista;
+    public void setLast(Almacen Last) {
+        this.Last = Last;
     }
 
 }

@@ -42,24 +42,36 @@ public class ListaAdy {
         return encontrado;
 
     }
-    
-    public void inserta(Arco nodo, Object destino){
-        if (listaVacia()){
+
+    public void inserta(Arco nodo, Object destino) {
+        if (listaVacia()) {
             setFirst(nodo);
             setLast(nodo);
-            
-        }else{
-            if(destino.toString().compareTo(getLast().getDestino().toString())>=0){
-                nodo= getLast().getSig();
-                nodo=getLast();
-                
+
+        } else {
+            if (destino.toString().compareTo(getFirst().getDestino().toString()) <= 0) {
+                nodo.setSig(getFirst());
+                setFirst(nodo);
+            } else{
+                if (destino.toString().compareTo(getLast().getDestino().toString()) >= 0) {
+                    getLast().setSig(nodo);
+                    setLast(nodo);
+                } else{
+                    Arco posición= getFirst();
+                    while(destino.toString().compareTo(posición.getDestino().toString()) <0) {
+                        posición=posición.getSig();
+                        
+                    }
+                    nodo.setSig(posición.getSig());
+                    posición.setSig(nodo);
+                }
+
+                }
             }
         }
-    }
-
-    /**
-     * @return the first
-     */
+        /**
+         * @return the first
+         */
     public Arco getFirst() {
         return first;
     }
@@ -82,7 +94,7 @@ public class ListaAdy {
      * @param Last the ult to set
      */
     public void setLast(Arco last) {
-        this.last= last;
+        this.last = last;
     }
 
 }

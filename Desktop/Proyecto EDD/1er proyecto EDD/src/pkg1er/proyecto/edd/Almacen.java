@@ -13,26 +13,55 @@ public class Almacen {
 
     private Almacen sig;
     private ListaAdy lista;
-    private int screen;
-    private int ram;
-    private int processor;
-    private int graphic;
-    private int keyboard;
-    private int mouse;
-    private int mic;
-    private int earphones;
+    private Object dato;
 
-    public Almacen(int screen, int ram, int processor, int graphic, int keyboard, int mouse, int mic, int earphones) {
+    public Almacen(Object dato) {
+        this.sig = null;
+        this.lista = new ListaAdy();
+        this.dato=dato;
+  
+    }
+
+    /**
+     * @return the sig
+     */
+    public Almacen getSig() {
+        return sig;
+    }
+
+    /**
+     * @param sig the sig to set
+     */
+    public void setSig(Almacen sig) {
         this.sig = sig;
+    }
+
+    /**
+     * @return the lista
+     */
+    public ListaAdy getLista() {
+        return lista;
+    }
+
+    /**
+     * @param lista the lista to set
+     */
+    public void setLista(ListaAdy lista) {
         this.lista = lista;
-        this.screen = screen;
-        this.ram = ram;
-        this.processor = processor;
-        this.graphic = graphic;
-        this.keyboard = keyboard;
-        this.mouse = mouse;
-        this.mic = mic;
-        this.earphones = earphones;
+    }
+
+    /**
+     * @return the dato
+     */
+    public Object getDato() {
+        return dato;
+    }
+
+    /**
+     * @param dato the dato to set
+     */
+    public void setDato(Object dato) {
+        this.dato = dato;
     }
 
     

@@ -16,7 +16,7 @@ public class Arco {
 
     public Arco(Object d, int p) {
         this.distancia = p;
-        this.sig = sig;
+        this.sig = null;
         this.destino = d;
     }
 
