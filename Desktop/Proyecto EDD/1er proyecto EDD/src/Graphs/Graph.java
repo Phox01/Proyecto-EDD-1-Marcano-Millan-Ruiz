@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package pkg1er.proyecto.edd;
+package Graphs;
 
 /**
  *
@@ -14,7 +14,7 @@ public class Graph {
     private Almacen First;
     private Almacen Last;
 
-    public Graph(Almacen First, Almacen Last) {
+    public Graph() {
         this.First = null;
         this.Last = null;
     }
@@ -23,12 +23,12 @@ public class Graph {
         return getFirst() == null;
     }
 
-    public boolean existeVertice(Object dato) {
+    public boolean existeVertice(String name) {
         boolean existe = false;
         if (!grafoVacio()) {
             Almacen temporal = getFirst();
             while (temporal != null && !existe) {
-                if (temporal.getDato().toString().equals(dato.toString())) {
+                if (temporal.getName().equals(name)) {
                     existe = true;
                 }
             }
@@ -37,10 +37,10 @@ public class Graph {
         return existe;
     }
 
-    public void NuevaArista(Object origen, Object destino, int d) {
+    public void NuevaArista(String origen, String destino, int d) {
         if (existeVertice(origen) && existeVertice(destino)) {
             Almacen posicion = getFirst();
-            while (!posicion.getDato().equals(origen.toString())) {
+            while (!posicion.getName().equals(origen)) {
                 posicion = posicion.getSig();
 
             }
@@ -48,24 +48,24 @@ public class Graph {
         }
     }
 
-    public void nuevoNodo(Object dato) {
-        if (!existeVertice(dato)) {
-            Almacen nodo = new Almacen(dato);
+    public void nuevoNodo(String name) {
+        if (!existeVertice(name)) {
+            Almacen nodo = new Almacen(name);
             if (grafoVacio()) {
                 setFirst(nodo);
                 setLast(nodo);
 
             } else {
-                if (dato.toString().compareTo(getFirst().getDato().toString()) <= 0) {
+                if (name.compareTo(getFirst().getName()) <= 0) {
                     nodo.setSig(getFirst());
                     setFirst(nodo);
                 } else {
-                    if (dato.toString().compareTo(getLast().getDato().toString()) >= 0) {
+                    if (name.compareTo(getLast().getName()) >= 0) {
                         getLast().setSig(nodo);
                         setLast(nodo);
                     } else {
                         Almacen temporal = getFirst();
-                        while (dato.toString().compareTo(temporal.getDato().toString()) < 0){
+                        while (name.compareTo(temporal.getName()) < 0){
                             temporal = temporal.getSig();
 
                         }
@@ -75,6 +75,16 @@ public class Graph {
                 }
             }
         }
+    }
+    
+    public String print(){
+        String printing="";
+        Almacen temporal=getFirst();
+        while (temporal!=null){
+            printing+=temporal.getName()+" --> "+temporal.getLista()+"\n";
+            temporal=temporal.getSig();
+        }
+        return printing;
     }
 
     /**

@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package pkg1er.proyecto.edd;
+package Graphs;
 
 /**
  *
@@ -12,9 +12,9 @@ package pkg1er.proyecto.edd;
 public class Arco {
     private int distancia;
     private Arco sig;
-    private Object destino;
+    private String destino;
 
-    public Arco(Object d, int p) {
+    public Arco(String d, int p) {
         this.distancia = p;
         this.sig = null;
         this.destino = d;
@@ -51,14 +51,14 @@ public class Arco {
     /**
      * @return the destino
      */
-    public Object getDestino() {
+    public String getDestino() {
         return destino;
     }
 
     /**
      * @param destino the destino to set
      */
-    public void setDestino(Object destino) {
+    public void setDestino(String destino) {
         this.destino = destino;
     }
     

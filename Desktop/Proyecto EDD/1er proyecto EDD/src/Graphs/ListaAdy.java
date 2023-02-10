@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package pkg1er.proyecto.edd;
+package Graphs;
 
 /**
  *
@@ -23,17 +23,17 @@ public class ListaAdy {
         return getFirst() == null;
     }
 
-    public void nuevaAdyacencia(Object d, int p) {
+    public void nuevaAdyacencia(String d, int p) {
         if (!adyacente(d)) {
             Arco nodo = new Arco(d, p);
             inserta(nodo, d);
         }
     }
 
-    public boolean adyacente(Object dato) {
+    public boolean adyacente(String name) {
         Arco actual = getFirst();
         boolean encontrado = false;
-        while (actual != null && !dato.toString().equals(actual.getDestino().toString())) {
+        while (actual != null && !name.equals(actual.getDestino())) {
             actual = actual.getSig();
         }
         if (actual != null) {
@@ -43,35 +43,46 @@ public class ListaAdy {
 
     }
 
-    public void inserta(Arco nodo, Object destino) {
+    public void inserta(Arco nodo, String destino) {
         if (listaVacia()) {
             setFirst(nodo);
             setLast(nodo);
 
         } else {
-            if (destino.toString().compareTo(getFirst().getDestino().toString()) <= 0) {
+            if (destino.compareTo(getFirst().getDestino()) <= 0) {
                 nodo.setSig(getFirst());
                 setFirst(nodo);
-            } else{
-                if (destino.toString().compareTo(getLast().getDestino().toString()) >= 0) {
+            } else {
+                if (destino.compareTo(getLast().getDestino()) >= 0) {
                     getLast().setSig(nodo);
                     setLast(nodo);
-                } else{
-                    Arco posición= getFirst();
-                    while(destino.toString().compareTo(posición.getDestino().toString()) <0) {
-                        posición=posición.getSig();
-                        
+                } else {
+                    Arco posición = getFirst();
+                    while (destino.compareTo(posición.getDestino()) < 0) {
+                        posición = posición.getSig();
+
                     }
                     nodo.setSig(posición.getSig());
                     posición.setSig(nodo);
                 }
 
-                }
             }
         }
-        /**
-         * @return the first
-         */
+    }
+
+    public String print() {
+        String printing = "";
+        Arco aux=getFirst();
+        while(aux!=null){
+            printing+=aux.getDestino()+" ; ";
+            aux=aux.getSig();
+        }
+        return printing;
+    }
+
+    /**
+     * @return the first
+     */
     public Arco getFirst() {
         return first;
     }

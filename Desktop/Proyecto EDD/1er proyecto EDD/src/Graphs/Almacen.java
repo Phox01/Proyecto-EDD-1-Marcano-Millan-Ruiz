@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package pkg1er.proyecto.edd;
+package Graphs;
 
 /**
  *
@@ -13,12 +13,12 @@ public class Almacen {
 
     private Almacen sig;
     private ListaAdy lista;
-    private Object dato;
+    private String name;
 
-    public Almacen(Object dato) {
+    public Almacen(String name) {
         this.sig = null;
         this.lista = new ListaAdy();
-        this.dato=dato;
+        this.name= name;
   
     }
 
@@ -51,17 +51,17 @@ public class Almacen {
     }
 
     /**
-     * @return the dato
+     * @return the name
      */
-    public Object getDato() {
-        return dato;
+    public String getName() {
+        return name;
     }
 
     /**
-     * @param dato the dato to set
+     * @param name the name to set
      */
-    public void setDato(Object dato) {
-        this.dato = dato;
+    public void setName (String name) {
+        this.name = name;
     }
 
     

@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package pkg1er.proyecto.edd;
+package Graphs;
 
 /**
  *
@@ -11,11 +11,13 @@ package pkg1er.proyecto.edd;
  */
 public class ProyectoEDD {
 
+
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+//        new Interfaz().setVisible(true);
+
     }
-    
+
 }
