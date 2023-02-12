@@ -3,7 +3,8 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Graphs;
+package Main;
+
 
 /**
  *
@@ -11,42 +12,42 @@ package Graphs;
  */
 public class Almacen {
 
-    private Almacen sig;
-    private ListaAdy lista;
+    private Almacen next;
+    private Stocklist lista;
     private String name;
 
-    public Almacen(String name) {
-        this.sig = null;
-        this.lista = new ListaAdy();
+    public Almacen(String name, Stocklist list) {
+        this.next = null;
+        this.lista = list;
         this.name= name;
   
     }
 
     /**
-     * @return the sig
+     * @return the next
      */
-    public Almacen getSig() {
-        return sig;
+    public Almacen getNext() {
+        return next;
     }
 
     /**
-     * @param sig the sig to set
+     * @param next the next to set
      */
-    public void setSig(Almacen sig) {
-        this.sig = sig;
+    public void setNext(Almacen next) {
+        this.next = next;
     }
 
     /**
      * @return the lista
      */
-    public ListaAdy getLista() {
+    public Stocklist getLista() {
         return lista;
     }
 
     /**
      * @param lista the lista to set
      */
-    public void setLista(ListaAdy lista) {
+    public void setLista(Stocklist lista) {
         this.lista = lista;
     }
 
