@@ -5,12 +5,14 @@
  */
 package Proyecto;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author <Joseph Ruiz EDD Unimet>
  */
 public class GUI2 extends javax.swing.JFrame {
-
+    
     static Grafo grafo;
 
     /**
@@ -39,7 +41,9 @@ public class GUI2 extends javax.swing.JFrame {
         input = new javax.swing.JTextField();
         option1 = new javax.swing.JComboBox<>();
         option2 = new javax.swing.JComboBox<>();
-        jButton1 = new javax.swing.JButton();
+        adybutton = new javax.swing.JButton();
+        addnodo = new javax.swing.JButton();
+        inputnodo = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -58,7 +62,7 @@ public class GUI2 extends javax.swing.JFrame {
                 showActionPerformed(evt);
             }
         });
-        jPanel1.add(show, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, -1, -1));
+        jPanel1.add(show, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 260, -1, -1));
 
         output.setColumns(20);
         output.setRows(5);
@@ -89,8 +93,22 @@ public class GUI2 extends javax.swing.JFrame {
         });
         jPanel1.add(option2, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 60, 60, 20));
 
-        jButton1.setText("Agregar Adyacencia");
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, -1, -1));
+        adybutton.setText("Agregar Adyacencia");
+        adybutton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                adybuttonActionPerformed(evt);
+            }
+        });
+        jPanel1.add(adybutton, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, -1, -1));
+
+        addnodo.setText("Agregar Almacen");
+        addnodo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addnodoActionPerformed(evt);
+            }
+        });
+        jPanel1.add(addnodo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, -1, -1));
+        jPanel1.add(inputnodo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, 110, -1));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Proyecto/pixels-video-games-wallpaper-preview.jpg"))); // NOI18N
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -20, 470, 330));
@@ -101,26 +119,60 @@ public class GUI2 extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void showActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showActionPerformed
-        output.setText(grafo.printGrafo());
+        output.setText(grafo.printAdy());
     }//GEN-LAST:event_showActionPerformed
 
     private void option1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_option1ActionPerformed
-        output.setText("");
-        String mensaje="";
-        mensaje=option1.getSelectedItem().toString();
-        output.append(mensaje);
+//        output.setText("");
+//        String mensaje = "";
+//        mensaje = option1.getSelectedItem().toString();
+//        output.append(mensaje);
     }//GEN-LAST:event_option1ActionPerformed
 
     private void option2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_option2ActionPerformed
-        String mensaje2="";
-        mensaje2=option2.getSelectedItem().toString();
-        output.append(mensaje2);
+//        String mensaje2 = "";
+//        mensaje2 = option2.getSelectedItem().toString();
+//        output.append(mensaje2);
     }//GEN-LAST:event_option2ActionPerformed
 
     private void inputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputActionPerformed
-        String number=input.getText();
-        output.append(number);
+//        String number = input.getText();
+//        output.append(number);
     }//GEN-LAST:event_inputActionPerformed
+
+    private void adybuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adybuttonActionPerformed
+        String mensaje1 = "";
+        String mensaje2 = "";
+        String number = "";
+        
+        mensaje1 = option1.getSelectedItem().toString();
+        mensaje2 = option2.getSelectedItem().toString();
+        number = input.getText();
+        
+//        output.setText(mensaje1 + mensaje2 + number);
+        if (mensaje1.equals(mensaje2) || number.equals("0") || number.equals(" ") || number.equals("") ) {
+            JOptionPane.showMessageDialog(null, "No se puede hacer esa adyacencia");
+            GUI2 window2 = new GUI2(grafo);
+            window2.show();
+            this.setVisible(false);
+        } else {
+            grafo.AddArco(grafo.returnNodoInIndex(mensaje1), grafo.returnNodoInIndex(mensaje2), Integer.parseInt(number));
+            JOptionPane.showMessageDialog(null, "Adyacencia hecha");
+            output.setText(grafo.printAdy());
+            
+        }
+        
+
+    }//GEN-LAST:event_adybuttonActionPerformed
+
+    private void addnodoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addnodoActionPerformed
+        String name=inputnodo.getText();
+        grafo.aumentarVerticesInsertar(name, new Stocklist());
+        output.setText(grafo.printAdy());
+        option1.addItem(name);
+        option2.addItem(name);
+        
+    }//GEN-LAST:event_addnodoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -158,8 +210,10 @@ public class GUI2 extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton addnodo;
+    private javax.swing.JButton adybutton;
     private javax.swing.JTextField input;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JTextField inputnodo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;

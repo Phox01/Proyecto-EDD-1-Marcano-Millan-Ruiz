@@ -17,10 +17,14 @@ public class Main {
     public static void main(String[] args) {
 //        Archivotexto file = new Archivotexto();
         Lista list= new Lista();
+//        Stocklist listastock= new Stocklist();
         Grafo grafo = new Grafo(list);
         GUI window = new GUI(grafo);
         window.setVisible(true);
 //        Grafo lectura = file.leer_txt();
+//        System.out.println(lectura.printAdy());
+//        lectura.aumentarVerticesInsertar("F", listastock);
+//        System.out.println(lectura.printAdy());
 //        lectura.printGrafo();
 //        file.escribir_txt(lectura);
 

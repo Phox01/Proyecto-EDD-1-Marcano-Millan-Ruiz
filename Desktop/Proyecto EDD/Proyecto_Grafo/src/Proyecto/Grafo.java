@@ -107,12 +107,15 @@ public class Grafo {
 
     public void aumentarVerticesInsertar(String dato, Stocklist list) {
         Almacen node = new Almacen(dato, list);
+        Almacen aux= getLista().getFirst();
 
         if (isEmpty()) {
             getLista().setFirst(node);
         } else {
-            node.setNext(getLista().getFirst());
-            getLista().setFirst(node);
+            while (aux.getNext()!=null) {                
+                aux=aux.getNext();
+            }
+            aux.setNext(node);
         }
 
         int Matrizaux[][] = getMatAd();
@@ -123,25 +126,57 @@ public class Grafo {
                 Matrizaux2[i][j] = Matrizaux[i][j];
             }
         }
+//        for (int i = 0; i < Matrizaux2.length; i++) {
+//            for (int j = 0; j < Matrizaux2.length; j++) {
+//                if(Matrizaux2[i][j]==0){
+//                    
+//                }
+//            }
+//
+//        }
         setMatAd(Matrizaux2);
-        getLista().setSize(getLista().getSize()+1);
+        getLista().setSize(getLista().getSize() + 1);
         numVerts++;
 
     }
 
     public String printGrafo() {
-        String print= "";
-        Almacen nodo1=getLista().getFirst();
-        Almacen nodo2=getLista().getFirst();
+        String print = "";
+        Almacen nodo1 = getLista().getFirst();
+        Almacen nodo2 = getLista().getFirst();
         for (int i = 0; i < getNumVerts(); i++) {
-            
+
             for (int j = 0; j < getNumVerts(); j++) {
-                print+=nodo1.getName() + nodo2.getName() +getMatAd()[i][j]+ ", ";
-                nodo2=nodo2.getNext();
+                print += nodo1.getName() + nodo2.getName() + getMatAd()[i][j] + ", ";
+                nodo2 = nodo2.getNext();
             }
-            print+="\n";
-            nodo1=nodo1.getNext();
-            nodo2=getLista().getFirst();
+            print += "\n";
+            nodo1 = nodo1.getNext();
+            nodo2 = getLista().getFirst();
+        }
+        return print;
+    }
+
+    public String printAdy() {
+        String print = "";
+        Almacen nodo1 = getLista().getFirst();
+        Almacen nodo2 = getLista().getFirst();
+        for (int i = 0; i < getNumVerts(); i++) {
+            print += nodo1.getName() + "-->";
+            for (int j = 0; j < getNumVerts(); j++) {
+                if (getMatAd()[i][j] != 0) {
+                    print += nodo2.getName() + " " + getMatAd()[i][j] + "-->";
+
+                }
+                if (j == getNumVerts() - 1) {
+                    print += "//";
+                }
+                nodo2 = nodo2.getNext();
+
+            }
+            print += "\n";
+            nodo1 = nodo1.getNext();
+            nodo2 = getLista().getFirst();
         }
         return print;
     }
