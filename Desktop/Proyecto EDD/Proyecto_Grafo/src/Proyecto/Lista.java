@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Main;
+package Proyecto;
 
 /**
  *
@@ -51,6 +51,15 @@ public class Lista {
         this.size = size;
     }
 
+    public void vaciar(){
+        Almacen pointer=getFirst();
+        if (!isEmpty()) {
+            setFirst(null);
+            getFirst().setNext(null);
+        }
+        
+    }
+    
     public Almacen EliminarInicio() {
 
         if (!isEmpty()) {

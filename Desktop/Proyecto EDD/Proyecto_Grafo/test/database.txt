@@ -14,4 +14,4 @@ Mouse,2
 Almacen E
 Microfono,7
 Audifonos,10
-Pantalla,3
+Pc,2

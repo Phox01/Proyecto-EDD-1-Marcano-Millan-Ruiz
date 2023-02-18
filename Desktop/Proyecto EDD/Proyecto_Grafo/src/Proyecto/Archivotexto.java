@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Main;
+package Proyecto;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -21,8 +21,9 @@ public class Archivotexto {
 //    public void escribir_txt(Grafo grafo) {
 //        String clientes = "";
 ////        if (!clientes) {
-    public Lista leer_txt() {
+    public Grafo leer_txt() {
         Lista almacenes = new Lista();
+        Grafo grafo = new Grafo(almacenes);
         String line;
         String grafo_txt = "";
         JFileChooser archivo = new JFileChooser();
@@ -42,28 +43,32 @@ public class Archivotexto {
 
             if (!"".equals(grafo_txt)) {
                 String[] grafo_split = grafo_txt.split("Rutas;\n");
+
                 String[] string_almacenes = grafo_split[0].split(";\n");
                 for (int i = 0; i < string_almacenes.length; i++) {
                     if (i != 0) {
                         Stocklist stock = new Stocklist();
 
                         String[] almacen = string_almacenes[i].split("\n");
+                        String[] nameAlmacen = almacen[0].split(" ");
                         for (int j = 0; j < almacen.length; j++) {
                             if (j != 0) {
                                 String[] item = almacen[j].split(",");
                                 stock.InsertFinal(item[0], Integer.parseInt(item[1]));
                             }
                         }
-                        almacenes.InsertFinal(almacen[0], stock);
+                        almacenes.InsertFinal(nameAlmacen[1], stock);
                     }
 
                 }
-                // String[] rutas = grafo_split[1].split("\n");
+                String[] rutas = grafo_split[1].split("\n");
+                Grafo grafoTemp= new Grafo(almacenes);
+                grafo = grafoTemp;
+                for (int i = 0; i < rutas.length; i++) {
+                    String[] ruta = rutas[i].split(",");
+                    grafo.AddArco(grafo.returnNodoInIndex(ruta[0]), grafo.returnNodoInIndex(ruta[1]), Integer.parseInt(ruta[2]));
+                }
 
-//                    for (int i = 0; i < rutas.length; i++) {
-//                        String[] ruta = rutas[i].split(",");
-//                        clientes.InsertFinal(nombre_almacen, su_lista);
-//                    }
             }
             br.close();
             JOptionPane.showMessageDialog(null, "lectura exitosa");
@@ -72,21 +77,21 @@ public class Archivotexto {
             JOptionPane.showMessageDialog(null, "error");
 
         }
-        return almacenes;
+        return grafo;
     }
 
-    public void escribir_txt(Lista list) {
+    public void escribir_txt(Grafo grafo) {
         JFileChooser archivo = new JFileChooser();
         archivo.showSaveDialog(null);
         File guarda = archivo.getSelectedFile();
         String almacenes_actuales = "Almacenes;\n";
         String rutas_actuales = "Rutas;\n";
-        if (!list.isEmpty()) {
-            Almacen aux = list.getFirst();
+        if (!grafo.isEmpty()) {
+            Almacen aux = grafo.getLista().getFirst();
 
-            for (int i = 0; i < list.getSize(); i++) {
+            for (int i = 0; i < grafo.getLista().getSize(); i++) {
                 NodoStock aux2 = aux.getLista().getFirst();
-                almacenes_actuales += aux.getName() + "\n";
+                almacenes_actuales += "Almacen"+ aux.getName() + "\n";
 
                 for (int j = 0; j < aux.getLista().getSize(); j++) {
                     almacenes_actuales += aux2.getName() + "," + aux2.getData() + "\n";
@@ -100,7 +105,7 @@ public class Archivotexto {
         try {
             PrintWriter pw = new PrintWriter(guarda);
             pw.print(almacenes_actuales);
-            pw.append(JOptionPane.showInputDialog("Item name") + "," + JOptionPane.showInputDialog("Item quantity") + "\n");
+            //pw.append(JOptionPane.showInputDialog("Item name") + "," + JOptionPane.showInputDialog("Item quantity") + "\n");
             pw.close();
             JOptionPane.showMessageDialog(null, "guardado exitoso");
 

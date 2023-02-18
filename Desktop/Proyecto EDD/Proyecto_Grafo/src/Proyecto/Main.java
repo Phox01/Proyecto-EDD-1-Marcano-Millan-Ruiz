@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Main;
+package Proyecto;
 
 /**
  *
@@ -15,10 +15,14 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        Archivotexto file = new Archivotexto();
-        Lista lectura=file.leer_txt();
-        lectura.print();
-        file.escribir_txt(lectura);
+//        Archivotexto file = new Archivotexto();
+        Lista list= new Lista();
+        Grafo grafo = new Grafo(list);
+        GUI window = new GUI(grafo);
+        window.setVisible(true);
+//        Grafo lectura = file.leer_txt();
+//        lectura.printGrafo();
+//        file.escribir_txt(lectura);
 
 //        Arraylist arreglo=new Arraylist(10);
 //        arreglo.insertBegin("estas", 1);
