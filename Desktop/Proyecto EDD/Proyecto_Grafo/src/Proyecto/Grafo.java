@@ -147,10 +147,11 @@ public class Grafo {
         for (int i = 0; i < getNumVerts(); i++) {
 
             for (int j = 0; j < getNumVerts(); j++) {
-                print += nodo1.getName() + nodo2.getName() + getMatAd()[i][j] + ", ";
+                if (getMatAd()[i][j] != 0) {
+                    print += nodo1.getName() +","+ nodo2.getName()+"," + getMatAd()[i][j] + "\n";
+                }
                 nodo2 = nodo2.getNext();
             }
-            print += "\n";
             nodo1 = nodo1.getNext();
             nodo2 = getLista().getFirst();
         }

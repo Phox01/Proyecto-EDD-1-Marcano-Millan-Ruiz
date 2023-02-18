@@ -87,24 +87,34 @@ public class Archivotexto {
         String almacenes_actuales = "Almacenes;\n";
         String rutas_actuales = "Rutas;\n";
         if (!grafo.isEmpty()) {
+            
             Almacen aux = grafo.getLista().getFirst();
 
             for (int i = 0; i < grafo.getLista().getSize(); i++) {
+                almacenes_actuales += "Almacen "+ aux.getName() + "\n";
                 NodoStock aux2 = aux.getLista().getFirst();
-                almacenes_actuales += "Almacen"+ aux.getName() + "\n";
+                if (aux2!=null) {
+                    for (int j = 0; j < aux.getLista().getSize(); j++) {
+                        almacenes_actuales += aux2.getName() + "," + aux2.getData();
+                        if (aux2.getNext()==null) {
+                            almacenes_actuales+=";";
+                        }
+                        almacenes_actuales+= "\n";
+                        aux2 = aux2.getNext();
 
-                for (int j = 0; j < aux.getLista().getSize(); j++) {
-                    almacenes_actuales += aux2.getName() + "," + aux2.getData() + "\n";
-                    aux2 = aux2.getNext();
+                    }
+                    
                 }
                 aux = aux.getNext();
 
             }
+            rutas_actuales+=grafo.printGrafo();
+            
         }
         String total = almacenes_actuales + rutas_actuales;
         try {
             PrintWriter pw = new PrintWriter(guarda);
-            pw.print(almacenes_actuales);
+            pw.print(total);
             //pw.append(JOptionPane.showInputDialog("Item name") + "," + JOptionPane.showInputDialog("Item quantity") + "\n");
             pw.close();
             JOptionPane.showMessageDialog(null, "guardado exitoso");
