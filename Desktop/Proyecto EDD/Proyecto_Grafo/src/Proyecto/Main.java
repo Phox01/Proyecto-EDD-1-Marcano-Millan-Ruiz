@@ -4,6 +4,8 @@
  * and open the template in the editor.
  */
 package Proyecto;
+import org.graphstream.graph.*;
+import org.graphstream.graph.implementations.*;
 
 /**
  *
@@ -15,6 +17,7 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        
 //        Archivotexto file = new Archivotexto();
         Lista list= new Lista();
 //        Stocklist listastock= new Stocklist();
