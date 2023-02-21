@@ -187,5 +187,10 @@ public class Grafo {
         getMatAd()[a][b] = peso;
 
     }
+    
+    
+    
+    
+    
 
 }

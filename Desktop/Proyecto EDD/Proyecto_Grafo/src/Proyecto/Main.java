@@ -19,7 +19,7 @@ public class Main {
         Lista list= new Lista();
 //        Stocklist listastock= new Stocklist();
         Grafo grafo = new Grafo(list);
-        GUI window = new GUI(grafo);
+        ImportMenu window = new ImportMenu(grafo);
         window.setVisible(true);
 //        Grafo lectura = file.leer_txt();
 //        System.out.println(lectura.printAdy());

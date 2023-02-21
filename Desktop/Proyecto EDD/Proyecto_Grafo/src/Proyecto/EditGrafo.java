@@ -5,24 +5,44 @@
  */
 package Proyecto;
 
+import static Proyecto.ImportMenu.grafo;
 import javax.swing.JOptionPane;
 
 /**
  *
  * @author <Joseph Ruiz EDD Unimet>
  */
-public class GUI2 extends javax.swing.JFrame {
+public class EditGrafo extends javax.swing.JFrame {
 
     private Archivotexto archivo = new Archivotexto();
     static Grafo grafo;
 
     /**
-     * Creates new form GUI2
+     * Creates new form OptionSelection
      */
-    public GUI2(Grafo grafo) {
+    public EditGrafo(Grafo grafo) {
         initComponents();
         this.grafo = grafo;
         setLocationRelativeTo(null);
+        
+        
+        
+        
+        Almacen pointer =grafo.getLista().getFirst();
+        
+        
+        while (pointer!= null){
+            
+           option1.addItem(pointer.getName());
+           option2.addItem(pointer.getName());
+
+            pointer= pointer.getNext();
+        }
+        
+        
+        
+        
+        
     }
 
     /**
@@ -45,10 +65,8 @@ public class GUI2 extends javax.swing.JFrame {
         adybutton = new javax.swing.JButton();
         addnodo = new javax.swing.JButton();
         inputnodo = new javax.swing.JTextField();
-        export = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
-        editalmacen = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -57,7 +75,6 @@ public class GUI2 extends javax.swing.JFrame {
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Sistemas Shop");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 20, 130, -1));
 
@@ -82,7 +99,6 @@ public class GUI2 extends javax.swing.JFrame {
         });
         jPanel1.add(input, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 60, 50, -1));
 
-        option1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "A", "B", "C", "D", "E" }));
         option1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 option1ActionPerformed(evt);
@@ -90,7 +106,6 @@ public class GUI2 extends javax.swing.JFrame {
         });
         jPanel1.add(option1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 60, 60, 20));
 
-        option2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "A", "B", "C", "D", "E" }));
         option2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 option2ActionPerformed(evt);
@@ -115,31 +130,19 @@ public class GUI2 extends javax.swing.JFrame {
         jPanel1.add(addnodo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 260, -1, -1));
         jPanel1.add(inputnodo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 220, 110, -1));
 
-        export.setText("Exportar");
-        export.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                exportActionPerformed(evt);
-            }
-        });
-        jPanel1.add(export, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 20, -1, -1));
-
-        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setText("Estas en modo admin");
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 150, -1));
 
-        jButton1.setText("Iniciar como usuario");
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 330, -1, -1));
-
-        editalmacen.setText("Editar Almacenes");
-        editalmacen.addActionListener(new java.awt.event.ActionListener() {
+        jButton1.setText("Salir");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                editalmacenActionPerformed(evt);
+                jButton1ActionPerformed(evt);
             }
         });
-        jPanel1.add(editalmacen, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 320, -1, -1));
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 330, -1, -1));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Proyecto/pixels-video-games-wallpaper-preview.jpg"))); // NOI18N
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, 490, 380));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, -10, 490, 380));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 480, 370));
 
@@ -180,7 +183,7 @@ public class GUI2 extends javax.swing.JFrame {
 //        output.setText(mensaje1 + mensaje2 + number);
         if (mensaje1.equals(mensaje2) || number.equals("0") || number.equals(" ") || number.equals("")) {
             JOptionPane.showMessageDialog(null, "No se puede hacer esa adyacencia");
-            GUI2 window2 = new GUI2(grafo);
+            EditGrafo window2 = new EditGrafo(grafo);
             window2.show();
             this.setVisible(false);
         } else {
@@ -202,13 +205,13 @@ public class GUI2 extends javax.swing.JFrame {
 
     }//GEN-LAST:event_addnodoActionPerformed
 
-    private void exportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exportActionPerformed
-        archivo.escribir_txt(grafo);
-    }//GEN-LAST:event_exportActionPerformed
-
-    private void editalmacenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editalmacenActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_editalmacenActionPerformed
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        
+         OptionSelection window2 = new OptionSelection(grafo);
+        window2.show();
+        this.setVisible(false);
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -227,20 +230,23 @@ public class GUI2 extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(GUI2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EditGrafo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(GUI2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EditGrafo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(GUI2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EditGrafo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(GUI2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EditGrafo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new GUI2(grafo).setVisible(true);
+                new EditGrafo(grafo).setVisible(true);
             }
         });
     }
@@ -248,8 +254,6 @@ public class GUI2 extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addnodo;
     private javax.swing.JButton adybutton;
-    private javax.swing.JButton editalmacen;
-    private javax.swing.JButton export;
     private javax.swing.JTextField input;
     private javax.swing.JTextField inputnodo;
     private javax.swing.JButton jButton1;
