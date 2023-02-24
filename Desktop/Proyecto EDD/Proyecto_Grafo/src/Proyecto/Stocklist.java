@@ -213,7 +213,7 @@ public class Stocklist {
             NodoStock pointer = getFirst();
 
             for (int i = 0; i < getSize(); i++) {
-                printing += pointer.getName() + pointer.getData() + "\n";
+                printing += "-"+ pointer.getName()+"-->" + pointer.getData() + "\n";
                 pointer = pointer.getNext();
             }
             return printing;

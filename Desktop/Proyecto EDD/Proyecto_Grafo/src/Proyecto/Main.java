@@ -19,9 +19,6 @@ public class Main {
      */
     public static void main(String[] args) {
 
-        Archivotexto file = new Archivotexto();
-        Grafo lectura = file.leer_txt();
-
         //lineas básicas para iniciar programa
         //inicialización lista
         Lista list = new Lista();
@@ -38,6 +35,8 @@ public class Main {
 //        System.out.println(lectura.printAdy());
 
 //////Prueba actual de BFS DFS
+//        Archivotexto file = new Archivotexto();
+//        Grafo lectura = file.leer_txt();
 //        System.out.println(lectura.printGrafo());
 //        System.out.println("Recorrido BFS");
 //        lectura.profundidad();

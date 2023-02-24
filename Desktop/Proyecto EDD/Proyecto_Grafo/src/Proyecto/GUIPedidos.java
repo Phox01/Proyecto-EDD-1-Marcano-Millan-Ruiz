@@ -50,16 +50,17 @@ public class GUIPedidos extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         AreaTexto = new javax.swing.JTextArea();
-        jLabel1 = new javax.swing.JLabel();
         Almacenes = new javax.swing.JComboBox<>();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         Almacenes2 = new javax.swing.JComboBox<>();
         jLabel4 = new javax.swing.JLabel();
         Cantidad = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
+        ok = new javax.swing.JButton();
+        pedido = new javax.swing.JButton();
+        salir = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -71,9 +72,6 @@ public class GUIPedidos extends javax.swing.JFrame {
         jScrollPane1.setViewportView(AreaTexto);
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 70, -1, -1));
-
-        jLabel1.setText("PEDIDOS");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 20, 50, -1));
 
         jPanel1.add(Almacenes, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, -1, -1));
 
@@ -100,29 +98,36 @@ public class GUIPedidos extends javax.swing.JFrame {
         });
         jPanel1.add(Cantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 210, 80, -1));
 
-        jButton1.setText("OK");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        ok.setText("OK");
+        ok.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                okActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, -1, -1));
+        jPanel1.add(ok, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, -1, -1));
 
-        jButton2.setText("Hacer Pedido");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        pedido.setText("Hacer Pedido");
+        pedido.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                pedidoActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 250, -1, -1));
+        jPanel1.add(pedido, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 250, -1, -1));
 
-        jButton6.setText("Salir");
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
+        salir.setText("Salir");
+        salir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
+                salirActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 260, -1, -1));
+        jPanel1.add(salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 260, -1, -1));
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
+        jLabel1.setText("Sistemas Shop");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 20, 130, -1));
+
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Proyecto/pixels-video-games-wallpaper-preview.jpg"))); // NOI18N
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(-70, -80, 530, 430));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 400, 300));
 
@@ -137,7 +142,7 @@ public class GUIPedidos extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_CantidadActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void okActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okActionPerformed
        
         String opcion = Almacenes.getSelectedItem().toString();
         String texto = "";
@@ -177,9 +182,9 @@ public class GUIPedidos extends javax.swing.JFrame {
         }
         
         
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_okActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void pedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pedidoActionPerformed
         
         int Numero = 0;
         
@@ -246,15 +251,15 @@ public class GUIPedidos extends javax.swing.JFrame {
         
         
         
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_pedidoActionPerformed
 
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+    private void salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salirActionPerformed
   OptionSelection window2 = new OptionSelection(grafo);
         window2.show();
-        this.setVisible(false);        
+        this.dispose();        
         
         
-    }//GEN-LAST:event_jButton6ActionPerformed
+    }//GEN-LAST:event_salirActionPerformed
 
     /**
      * @param args the command line arguments
@@ -296,14 +301,15 @@ public class GUIPedidos extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> Almacenes2;
     private javax.swing.JTextArea AreaTexto;
     private javax.swing.JTextField Cantidad;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JButton ok;
+    private javax.swing.JButton pedido;
+    private javax.swing.JButton salir;
     // End of variables declaration//GEN-END:variables
 }

@@ -14,11 +14,12 @@ public class GUIShowStock extends javax.swing.JFrame {
 
     private Archivotexto archivo = new Archivotexto();
     static Grafo grafo;
-    public GUIShowStock() {
+
+    public GUIShowStock(Grafo grafo) {
         initComponents();
         this.grafo = grafo;
         setLocationRelativeTo(null);
-        
+
     }
 
     /**
@@ -32,57 +33,75 @@ public class GUIShowStock extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
-        jToggleButton1 = new javax.swing.JToggleButton();
-        jToggleButton2 = new javax.swing.JToggleButton();
-        jToggleButton3 = new javax.swing.JToggleButton();
+        output = new javax.swing.JTextArea();
+        DFS = new javax.swing.JToggleButton();
+        BFS = new javax.swing.JToggleButton();
+        salir = new javax.swing.JToggleButton();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        output.setColumns(20);
+        output.setRows(5);
+        jScrollPane1.setViewportView(output);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 120, -1, 121));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 120, 310, 240));
 
-        jToggleButton1.setText("DFS");
-        jPanel1.add(jToggleButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 60, 90, 40));
-
-        jToggleButton2.setText("BFS");
-        jPanel1.add(jToggleButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 62, 100, 40));
-
-        jToggleButton3.setText("Salir");
-        jToggleButton3.addActionListener(new java.awt.event.ActionListener() {
+        DFS.setText("DFS");
+        DFS.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jToggleButton3ActionPerformed(evt);
+                DFSActionPerformed(evt);
             }
         });
-        jPanel1.add(jToggleButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 270, -1, -1));
+        jPanel1.add(DFS, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 70, 80, 40));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-4, -6, 410, 310));
+        BFS.setText("BFS");
+        BFS.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BFSActionPerformed(evt);
+            }
+        });
+        jPanel1.add(BFS, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 70, 80, 40));
+
+        salir.setText("Salir");
+        salir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                salirActionPerformed(evt);
+            }
+        });
+        jPanel1.add(salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 360, -1, -1));
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
+        jLabel1.setText("Sistemas Shop");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 20, 130, -1));
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Proyecto/pixels-video-games-wallpaper-preview.jpg"))); // NOI18N
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(-70, -40, 530, 430));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-4, -6, 460, 390));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jToggleButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton3ActionPerformed
-        
-        
-        
-        
-         OptionSelection window2 = new OptionSelection(grafo);
+    private void salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salirActionPerformed
+        OptionSelection window2 = new OptionSelection(grafo);
         window2.show();
-        this.setVisible(false);        
-        
-        
-        
-        
-        
-        
-        
-    }//GEN-LAST:event_jToggleButton3ActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_salirActionPerformed
+
+    private void DFSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DFSActionPerformed
+        output.setText("");
+        output.setText(grafo.profundidad());
+    }//GEN-LAST:event_DFSActionPerformed
+
+    private void BFSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BFSActionPerformed
+        output.setText("");
+        output.setText(grafo.recorridoBFS());
+    }//GEN-LAST:event_BFSActionPerformed
 
     /**
      * @param args the command line arguments
@@ -114,17 +133,19 @@ public class GUIShowStock extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new GUIShowStock().setVisible(true);
+                new GUIShowStock(grafo).setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JToggleButton BFS;
+    private javax.swing.JToggleButton DFS;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JToggleButton jToggleButton1;
-    private javax.swing.JToggleButton jToggleButton2;
-    private javax.swing.JToggleButton jToggleButton3;
+    private javax.swing.JTextArea output;
+    private javax.swing.JToggleButton salir;
     // End of variables declaration//GEN-END:variables
 }

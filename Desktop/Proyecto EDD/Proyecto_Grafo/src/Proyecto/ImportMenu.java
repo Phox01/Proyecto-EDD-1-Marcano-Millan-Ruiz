@@ -5,6 +5,8 @@
  */
 package Proyecto;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author <Joseph Ruiz EDD Unimet>
@@ -15,7 +17,7 @@ public class ImportMenu extends javax.swing.JFrame {
     static Grafo grafo;
 
     /**
-     * Creates new form GUI
+     * Creates new form GUIConfirmation
      */
     public ImportMenu(Grafo grafo) {
         initComponents();
@@ -40,7 +42,7 @@ public class ImportMenu extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        OK = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
 
         jInternalFrame1.setVisible(true);
@@ -79,20 +81,18 @@ public class ImportMenu extends javax.swing.JFrame {
 
         jLabel4.setText("Para comenzar, ingrese un archivo para");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 80, 240, -1));
-
-        jLabel5.setText("Estas en modo admin");
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 150, -1));
 
-        jButton1.setText("OK");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        OK.setText("OK");
+        OK.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                OKActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 200, 60, -1));
+        jPanel1.add(OK, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 200, 60, -1));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Proyecto/pixels-video-games-wallpaper-preview.jpg"))); // NOI18N
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(-50, 0, 420, 330));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(-60, 0, 420, 330));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 350, 300));
 
@@ -101,14 +101,24 @@ public class ImportMenu extends javax.swing.JFrame {
 
     private void ImportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ImportActionPerformed
         grafo = archivo.leer_txt();
-       
+
     }//GEN-LAST:event_ImportActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-       OptionSelection window2 = new OptionSelection(grafo);
-        window2.show();
-        this.setVisible(false);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void OKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OKActionPerformed
+        try {
+            if (grafo.isEmpty()) {
+                GUIConfirmation window3= new GUIConfirmation(grafo);
+                window3.setVisible(true);
+            }else{
+                OptionSelection window2 = new OptionSelection(grafo);
+                window2.show();
+                this.dispose();
+            }
+
+            
+        } catch (Exception e) {
+        }
+    }//GEN-LAST:event_OKActionPerformed
 
     /**
      * @param args the command line arguments
@@ -148,7 +158,7 @@ public class ImportMenu extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Import;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton OK;
     private javax.swing.JInternalFrame jInternalFrame1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

@@ -24,8 +24,7 @@ public class OptionSelection extends javax.swing.JFrame {
         initComponents();
         this.grafo = grafo;
         setLocationRelativeTo(null);
-        
-      
+
     }
 
     /**
@@ -39,13 +38,12 @@ public class OptionSelection extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        addproduct = new javax.swing.JButton();
         export = new javax.swing.JButton();
-        jLabel5 = new javax.swing.JLabel();
         editalmacen = new javax.swing.JButton();
         pedido = new javax.swing.JButton();
         editgrafo = new javax.swing.JButton();
         showgrafo = new javax.swing.JButton();
+        recorridos = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -57,14 +55,6 @@ public class OptionSelection extends javax.swing.JFrame {
         jLabel1.setText("Sistemas Shop");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 20, 130, -1));
 
-        addproduct.setText("Agregar Producto");
-        addproduct.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                addproductActionPerformed(evt);
-            }
-        });
-        jPanel1.add(addproduct, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 170, -1, 50));
-
         export.setText("Exportar");
         export.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -73,16 +63,13 @@ public class OptionSelection extends javax.swing.JFrame {
         });
         jPanel1.add(export, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 330, -1, -1));
 
-        jLabel5.setText("Estas en modo admin");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 150, -1));
-
         editalmacen.setText("Edit Almacen");
         editalmacen.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 editalmacenActionPerformed(evt);
             }
         });
-        jPanel1.add(editalmacen, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 170, 130, 50));
+        jPanel1.add(editalmacen, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 150, 130, 50));
 
         pedido.setText("Hacer Pedido");
         pedido.addActionListener(new java.awt.event.ActionListener() {
@@ -101,7 +88,15 @@ public class OptionSelection extends javax.swing.JFrame {
         jPanel1.add(editgrafo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, 130, 50));
 
         showgrafo.setText("Grafo");
-        jPanel1.add(showgrafo, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 242, 110, 40));
+        jPanel1.add(showgrafo, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 240, 120, 50));
+
+        recorridos.setText("Recorrer grafo");
+        recorridos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                recorridosActionPerformed(evt);
+            }
+        });
+        jPanel1.add(recorridos, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 150, 130, 50));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Proyecto/pixels-video-games-wallpaper-preview.jpg"))); // NOI18N
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, -10, 490, 380));
@@ -111,47 +106,41 @@ public class OptionSelection extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void addproductActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addproductActionPerformed
-EditAlmacen window2 = new EditAlmacen(grafo);
-        window2.show();
-        this.setVisible(false);         
-
-    }//GEN-LAST:event_addproductActionPerformed
-
     private void exportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exportActionPerformed
         archivo.escribir_txt(grafo);
     }//GEN-LAST:event_exportActionPerformed
 
     private void editalmacenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editalmacenActionPerformed
-      EditAlmacen window2 = new EditAlmacen(grafo);
+        EditAlmacen window2 = new EditAlmacen(grafo);
         window2.show();
-        this.setVisible(false);       
-        
-        
-        
-        
-        
+        this.dispose();
+
+
     }//GEN-LAST:event_editalmacenActionPerformed
 
     private void pedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pedidoActionPerformed
-       
-          GUIPedidos window3 = new GUIPedidos(grafo);
+
+        GUIPedidos window3 = new GUIPedidos(grafo);
         window3.show();
-        this.setVisible(false); 
-        
-        
-        
+        this.dispose();
+
+
     }//GEN-LAST:event_pedidoActionPerformed
 
     private void editgrafoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editgrafoActionPerformed
-        
+
         EditGrafo window3 = new EditGrafo(grafo);
         window3.show();
-        this.setVisible(false); 
-        
-        
-        
+        this.dispose();
+
+
     }//GEN-LAST:event_editgrafoActionPerformed
+
+    private void recorridosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_recorridosActionPerformed
+        GUIShowStock window4 = new GUIShowStock(grafo);
+        window4.show();
+        this.dispose();
+     }//GEN-LAST:event_recorridosActionPerformed
 
     /**
      * @param args the command line arguments
@@ -190,15 +179,14 @@ EditAlmacen window2 = new EditAlmacen(grafo);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton addproduct;
     private javax.swing.JButton editalmacen;
     private javax.swing.JButton editgrafo;
     private javax.swing.JButton export;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JButton pedido;
+    private javax.swing.JButton recorridos;
     private javax.swing.JButton showgrafo;
     // End of variables declaration//GEN-END:variables
 }

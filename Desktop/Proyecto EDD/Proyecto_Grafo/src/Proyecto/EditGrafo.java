@@ -57,8 +57,7 @@ public class EditGrafo extends javax.swing.JFrame {
         adybutton = new javax.swing.JButton();
         addnodo = new javax.swing.JButton();
         inputnodo = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        salir = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -122,16 +121,13 @@ public class EditGrafo extends javax.swing.JFrame {
         jPanel1.add(addnodo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 260, -1, -1));
         jPanel1.add(inputnodo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 220, 110, -1));
 
-        jLabel5.setText("Estas en modo admin");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 150, -1));
-
-        jButton1.setText("Salir");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        salir.setText("Salir");
+        salir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                salirActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 330, -1, -1));
+        jPanel1.add(salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 330, -1, -1));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Proyecto/pixels-video-games-wallpaper-preview.jpg"))); // NOI18N
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, -10, 490, 380));
@@ -162,20 +158,22 @@ public class EditGrafo extends javax.swing.JFrame {
         mensaje1 = option1.getSelectedItem().toString();
         mensaje2 = option2.getSelectedItem().toString();
         number = input.getText();
+        
+        //Confirmar que es número
         boolean value=false;
         try {
             Integer.parseInt(number);
             value= true;
         } catch (Exception e) {
             value= false;
-            System.out.println("El valor que ingresa no es numérico");
+            JOptionPane.showMessageDialog(null, "El valor que ingresa no es numérico");
         }
 
         if (mensaje1.equals(mensaje2) || number.equals("0") || number.equals(" ") || number.equals("") || value==false) {
             JOptionPane.showMessageDialog(null, "No se puede hacer esa adyacencia");
             EditGrafo window2 = new EditGrafo(grafo);
             window2.show();
-            this.setVisible(false);
+            this.dispose();
         } else {
             grafo.AddArco(grafo.returnNodoInIndex(mensaje1), grafo.returnNodoInIndex(mensaje2), Integer.parseInt(number));
             JOptionPane.showMessageDialog(null, "Adyacencia hecha");
@@ -195,13 +193,13 @@ public class EditGrafo extends javax.swing.JFrame {
 
     }//GEN-LAST:event_addnodoActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salirActionPerformed
 
         OptionSelection window2 = new OptionSelection(grafo);
         window2.show();
-        this.setVisible(false);
+        this.dispose();
 
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_salirActionPerformed
 
     /**
      * @param args the command line arguments
@@ -246,15 +244,14 @@ public class EditGrafo extends javax.swing.JFrame {
     private javax.swing.JButton adybutton;
     private javax.swing.JTextField input;
     private javax.swing.JTextField inputnodo;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JComboBox<String> option1;
     private javax.swing.JComboBox<String> option2;
     private javax.swing.JTextArea output;
+    private javax.swing.JButton salir;
     private javax.swing.JButton show;
     // End of variables declaration//GEN-END:variables
 }

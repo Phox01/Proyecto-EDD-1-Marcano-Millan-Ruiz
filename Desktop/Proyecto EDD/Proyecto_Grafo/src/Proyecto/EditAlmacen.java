@@ -45,7 +45,6 @@ public class EditAlmacen extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         ok = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -53,7 +52,7 @@ public class EditAlmacen extends javax.swing.JFrame {
         Almacenes = new javax.swing.JComboBox<>();
         Almacenes2 = new javax.swing.JComboBox<>();
         jLabel3 = new javax.swing.JLabel();
-        Numero1 = new javax.swing.JTextField();
+        numero1 = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         Producto2 = new javax.swing.JTextField();
         Numero2 = new javax.swing.JTextField();
@@ -63,18 +62,14 @@ public class EditAlmacen extends javax.swing.JFrame {
         OK2 = new javax.swing.JButton();
         OK3 = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
         jButton1 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel1.setText("ADD STOCK");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 10, 90, -1));
 
         jLabel2.setText("Indique el Almacen");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 40, 110, -1));
@@ -91,7 +86,7 @@ public class EditAlmacen extends javax.swing.JFrame {
         AreaTexto.setRows(5);
         jScrollPane1.setViewportView(AreaTexto);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 30, -1, 100));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 50, -1, 100));
 
         Almacenes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -105,43 +100,43 @@ public class EditAlmacen extends javax.swing.JFrame {
                 Almacenes2ActionPerformed(evt);
             }
         });
-        jPanel1.add(Almacenes2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, 80, -1));
+        jPanel1.add(Almacenes2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 230, 80, -1));
 
         jLabel3.setText("AGREGAR  PRODUCTO");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 170, 130, -1));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 200, 130, -1));
 
-        Numero1.addActionListener(new java.awt.event.ActionListener() {
+        numero1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Numero1ActionPerformed(evt);
+                numero1ActionPerformed(evt);
             }
         });
-        jPanel1.add(Numero1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 190, 70, -1));
+        jPanel1.add(numero1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 230, 70, -1));
 
         jLabel4.setText("NUEVO PRODUCTO");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 170, -1, -1));
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 200, -1, -1));
 
         Producto2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Producto2ActionPerformed(evt);
             }
         });
-        jPanel1.add(Producto2, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 190, 80, -1));
+        jPanel1.add(Producto2, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 230, 80, -1));
 
         Numero2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Numero2ActionPerformed(evt);
             }
         });
-        jPanel1.add(Numero2, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 190, 80, -1));
+        jPanel1.add(Numero2, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 230, 80, -1));
 
         jLabel5.setText("producto");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 210, -1, -1));
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 270, -1, -1));
 
         jLabel6.setText("numero");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 210, -1, -1));
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 270, -1, -1));
 
         jLabel7.setText("numero");
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 210, -1, -1));
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 270, -1, -1));
 
         OK2.setText("OK");
         OK2.addActionListener(new java.awt.event.ActionListener() {
@@ -149,7 +144,7 @@ public class EditAlmacen extends javax.swing.JFrame {
                 OK2ActionPerformed(evt);
             }
         });
-        jPanel1.add(OK2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 230, -1, -1));
+        jPanel1.add(OK2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 300, -1, -1));
 
         OK3.setText("OK");
         OK3.addActionListener(new java.awt.event.ActionListener() {
@@ -157,12 +152,10 @@ public class EditAlmacen extends javax.swing.JFrame {
                 OK3ActionPerformed(evt);
             }
         });
-        jPanel1.add(OK3, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 230, -1, -1));
+        jPanel1.add(OK3, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 300, -1, -1));
 
         jLabel8.setText("producto");
-        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 210, 60, -1));
-
-        jPanel1.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 140, 80, -1));
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 270, 60, -1));
 
         jButton1.setText("Salir");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -170,12 +163,16 @@ public class EditAlmacen extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 270, -1, -1));
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 310, -1, -1));
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
+        jLabel1.setText("Sistemas Shop");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 20, 130, -1));
 
         jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Proyecto/pixels-video-games-wallpaper-preview.jpg"))); // NOI18N
-        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(-90, 0, 510, 330));
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(-90, 0, 590, 350));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 400, 300));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 500, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -186,13 +183,13 @@ public class EditAlmacen extends javax.swing.JFrame {
     }//GEN-LAST:event_Almacenes2ActionPerformed
 
     private void okActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okActionPerformed
+        Almacenes2.removeAllItems();
         String opcion = Almacenes.getSelectedItem().toString();
         String texto = "";
 
         Almacen pointer = grafo.getLista().getFirst();
-        
+
 //        NodoStock pointerstock= grafo.getLista().getFirst().
-        
         while (!pointer.getName().equalsIgnoreCase(opcion)) {
 
             pointer = pointer.getNext();
@@ -221,6 +218,8 @@ public class EditAlmacen extends javax.swing.JFrame {
 
             }
 
+        }else{
+            AreaTexto.setText("No hay nigún producto en el almacen");
         }
 
 
@@ -236,56 +235,73 @@ public class EditAlmacen extends javax.swing.JFrame {
         String texto = "";
 
         //CONFIRMAR QUE ES UN NUMERO
-        int Numero = Integer.parseInt(Numero1.getText());
-        
-         if (Numero1.getText().equals("")) {
+        String numero = "";
+        numero = numero1.getText();
+//        
+//         if (Numero1.getText().equals("")) {
+//
+//            Numero = 0;
+//
+//        } else {
+//            Numero = Integer.parseInt(Numero1.getText());
+//        }
 
-            Numero = 0;
-
-        } else {
-            Numero = Integer.parseInt(Numero1.getText());
+        //Confirmar que es número
+        boolean value = false;
+        try {
+            Integer.parseInt(numero);
+            value = true;
+        } catch (Exception e) {
+            value = false;
+            JOptionPane.showMessageDialog(null, "El valor que ingresa no es numérico");
         }
-        
-        
-        
-        
+
         Almacen pointer = grafo.getLista().getFirst();
 
         while (!pointer.getName().equalsIgnoreCase(opcion)) {
 
             pointer = pointer.getNext();
         }
+        //Validando y arrojando que el valor no es numérico
+        if (numero.equals("0") || numero.equals(" ") || numero.equals("") || value == false) {
+            JOptionPane.showMessageDialog(null, "No se puede hacer esa operación");
+            EditAlmacen window2 = new EditAlmacen(grafo);
+            window2.show();
+            this.dispose();
+            //Si el valor sí es numérico, continuar
+        } else {
+            if (!pointer.getLista().isEmpty()) {
+                NodoStock pointer3 = pointer.getLista().getFirst();
+                while (!pointer3.getName().equalsIgnoreCase(Almacenes2.getSelectedItem().toString()) && pointer.getNext() != null) {
 
-        if (!pointer.getLista().isEmpty()) {
-            NodoStock pointer3 = pointer.getLista().getFirst();
-            while (!pointer3.getName().equalsIgnoreCase(Almacenes2.getSelectedItem().toString())) {
+                    pointer3 = pointer3.getNext();
 
-                pointer3 = pointer3.getNext();
+                }
+
+                pointer3.setData(pointer3.getData() + Integer.parseInt(numero));
+            }
+
+            texto = texto + Almacenes.getSelectedItem().toString() + "\n";
+
+            if (!pointer.getLista().isEmpty()) {
+                NodoStock pointer2 = pointer.getLista().getFirst();
+                while (pointer2 != null) {
+
+                    texto = texto + "producto: " + pointer2.getName() + "-->" + pointer2.getData() + "\n";
+                    pointer2 = pointer2.getNext();
+                }
+                AreaTexto.setText(texto);
 
             }
 
-            pointer3.setData(pointer3.getData() + Numero);
-        }
-
-        texto = texto + Almacenes.getSelectedItem().toString() + "\n";
-
-        if (!pointer.getLista().isEmpty()) {
-            NodoStock pointer2 = pointer.getLista().getFirst();
-            while (pointer2 != null) {
-
-                texto = texto + "producto: " + pointer2.getName() + "-->" + pointer2.getData() + "\n";
-                pointer2 = pointer2.getNext();
-            }
-            AreaTexto.setText(texto);
+            numero1.setText("");
 
         }
-
-        Numero1.setText("");
     }//GEN-LAST:event_OK2ActionPerformed
 
-    private void Numero1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Numero1ActionPerformed
+    private void numero1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_numero1ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Numero1ActionPerformed
+    }//GEN-LAST:event_numero1ActionPerformed
 
     private void Numero2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Numero2ActionPerformed
         // TODO add your handling code here:
@@ -294,98 +310,104 @@ public class EditAlmacen extends javax.swing.JFrame {
     private void OK3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OK3ActionPerformed
         // Confirmar que es un numero
 
-        System.out.println("da");
+//        System.out.println("da");
+
         String opcion = Almacenes.getSelectedItem().toString();
         String producto = "";
         String texto = "";
-        int numero = 0;
+        String numero = Numero2.getText();
 
-        if (Numero2.getText().equals("")) {
-
-            numero = 0;
-
-        } else {
-            numero = Integer.parseInt(Numero2.getText());
+        //Confirmar que es número
+        boolean value = false;
+        try {
+            Integer.parseInt(numero);
+            value = true;
+        } catch (Exception e) {
+            value = false;
+            JOptionPane.showMessageDialog(null, "El valor que ingresa no es numérico");
         }
 
-        //confirmar que numero2 tiene que estar y ser numero
-        if (Producto2.getText().equalsIgnoreCase("pantalla") || Producto2.getText().equalsIgnoreCase("ram") || Producto2.getText().equalsIgnoreCase("grafica") || Producto2.getText().equalsIgnoreCase("placa") || Producto2.getText().equalsIgnoreCase("teclado") || Producto2.getText().equalsIgnoreCase("mouse") || Producto2.getText().equalsIgnoreCase("microfono") || Producto2.getText().equalsIgnoreCase("audifono")) {
-            System.out.println("si");
-            if (Producto2.getText().equalsIgnoreCase("pantalla")) {
-                producto = "Pantalla";
+        if (numero.equals("0") || numero.equals(" ") || numero.equals("") || value == false) {
+            JOptionPane.showMessageDialog(null, "No se puede hacer esa operación");
+            EditAlmacen window2 = new EditAlmacen(grafo);
+            window2.show();
+            this.dispose();
+            //Si el valor sí es numérico, continuar
+        } else {
+            //confirmar que numero2 tiene que estar y ser numero
+            if (Producto2.getText().toLowerCase().equalsIgnoreCase("pantalla") || Producto2.getText().toLowerCase().equalsIgnoreCase("ram") || Producto2.getText().toLowerCase().equalsIgnoreCase("grafica") || Producto2.getText().toLowerCase().equalsIgnoreCase("placa") || Producto2.getText().toLowerCase().equalsIgnoreCase("teclado") || Producto2.getText().toLowerCase().equalsIgnoreCase("mouse") || Producto2.getText().toLowerCase().equalsIgnoreCase("microfono") || Producto2.getText().toLowerCase().equalsIgnoreCase("audifono")) {
+//                System.out.println("si");
+                if (Producto2.getText().toLowerCase().equalsIgnoreCase("pantalla")) {
+                    producto = "Pantalla";
 
-            } else if (Producto2.getText().equalsIgnoreCase("grafica")) {
-                producto = "Grafica";
-            } else if (Producto2.getText().equalsIgnoreCase("ram")) {
-                producto = "RAM";
+                } else if (Producto2.getText().toLowerCase().equalsIgnoreCase("grafica")) {
+                    producto = "Grafica";
+                } else if (Producto2.getText().toLowerCase().equalsIgnoreCase("ram")) {
+                    producto = "RAM";
 
-            } else if (Producto2.getText().equalsIgnoreCase("placa")) {
-                producto = "Placa";
-            } else if (Producto2.getText().equalsIgnoreCase("teclado")) {
-                producto = "Teclado";
-                System.out.println("es teclado");
-                System.out.println(producto);
-            } else if (Producto2.getText().equalsIgnoreCase("mouse")) {
-                producto = "Mouse";
+                } else if (Producto2.getText().toLowerCase().equalsIgnoreCase("placa")) {
+                    producto = "Placa";
+                } else if (Producto2.getText().toLowerCase().equalsIgnoreCase("teclado")) {
+                    producto = "Teclado";
+//                    System.out.println("es teclado");
+//                    System.out.println(producto);
+                } else if (Producto2.getText().toLowerCase().equalsIgnoreCase("mouse")) {
+                    producto = "Mouse";
 
-            } else if (Producto2.getText().equalsIgnoreCase("microfono")) {
-                producto = "Microfono";
+                } else if (Producto2.getText().toLowerCase().equalsIgnoreCase("microfono")) {
+                    producto = "Microfono";
 
-            } else if (Producto2.getText().equalsIgnoreCase("audifono")) {
-                producto = "Audifono";
-            }
-
-            Almacen pointer = grafo.getLista().getFirst();
-
-            while (!pointer.getName().equalsIgnoreCase(opcion)) {
-
-                pointer = pointer.getNext();
-            }
-
-            System.out.println("en almacen");
-            NodoStock pointer3 = pointer.getLista().getFirst();
-            while (pointer3 != null) {
-
-                if (pointer3.getName().equals(producto) && !pointer3.getName().equalsIgnoreCase("")) {
-                    break;
+                } else if (Producto2.getText().toLowerCase().equalsIgnoreCase("audifono")) {
+                    producto = "Audifono";
                 }
 
-                pointer3 = pointer3.getNext();
+                Almacen pointer = grafo.getLista().getFirst();
 
-            }
-            if (pointer3 == null) {
-                System.out.println("no esta en la lista");
+                while (!pointer.getName().equalsIgnoreCase(opcion)&&pointer.getNext()!=null) {
+
+                    pointer = pointer.getNext();
+                }
+
+//                System.out.println("en almacen");
+                NodoStock pointer3 = pointer.getLista().getFirst();
+                while (pointer3 != null) {
+
+                    if (pointer3.getName().equals(producto) && !pointer3.getName().equalsIgnoreCase("")) {
+                        break;
+                    }
+
+                    pointer3 = pointer3.getNext();
+
+                }
+
+                if (pointer3 == null) {
+
+                    pointer.getLista().InsertFinal(producto, Integer.parseInt(numero));
+                    Almacenes2.addItem(producto);
+
+                }else {
+                    JOptionPane.showMessageDialog(null, "Este producto ya está en este almacen, por favor, utiliza la opción 'Agregar producto'");
+                }
+
+                texto = texto + Almacenes.getSelectedItem().toString() + "\n";
+                NodoStock pointer2 = pointer.getLista().getFirst();
+                while (pointer2 != null) {
+
+                    texto = texto + "producto: " + pointer2.getName() + "-->" + pointer2.getData() + "\n";
+                    pointer2 = pointer2.getNext();
+                }
+                AreaTexto.setText(texto);
 
             } else {
-                System.out.println("si esta");
-            }
-
-            if (pointer3 == null) {
-
-                pointer.getLista().InsertFinal(producto, numero);
+                JOptionPane.showMessageDialog(null, "Este producto no se encuentra en el sistema");
 
             }
 
-            texto = texto + Almacenes.getSelectedItem().toString() + "\n";
-            NodoStock pointer2 = pointer.getLista().getFirst();
-            while (pointer2 != null) {
+            Numero2.setText("");
 
-                texto = texto + "producto: " + pointer2.getName() + "-->" + pointer2.getData() + "\n";
-                pointer2 = pointer2.getNext();
-            }
-            AreaTexto.setText(texto);
-
-        } else {
-            System.out.println("no");
-            AreaTexto.setText("Este producto No esta en Stock");
+            Producto2.setText("");
 
         }
-
-        Numero2.setText("");
-
-        Producto2.setText("");
-
-
     }//GEN-LAST:event_OK3ActionPerformed
 
     private void Producto2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Producto2ActionPerformed
@@ -393,12 +415,12 @@ public class EditAlmacen extends javax.swing.JFrame {
     }//GEN-LAST:event_Producto2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        
-            OptionSelection window2 = new OptionSelection(grafo);
+
+        OptionSelection window2 = new OptionSelection(grafo);
         window2.show();
-        this.setVisible(false);
-        
-        
+        this.dispose();
+
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
@@ -441,13 +463,11 @@ public class EditAlmacen extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> Almacenes;
     private javax.swing.JComboBox<String> Almacenes2;
     private javax.swing.JTextArea AreaTexto;
-    private javax.swing.JTextField Numero1;
     private javax.swing.JTextField Numero2;
     private javax.swing.JButton OK2;
     private javax.swing.JButton OK3;
     private javax.swing.JTextField Producto2;
     private javax.swing.JButton jButton1;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -459,6 +479,7 @@ public class EditAlmacen extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextField numero1;
     private javax.swing.JButton ok;
     // End of variables declaration//GEN-END:variables
 }

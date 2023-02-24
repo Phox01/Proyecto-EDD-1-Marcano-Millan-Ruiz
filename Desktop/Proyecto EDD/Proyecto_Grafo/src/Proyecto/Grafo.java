@@ -54,48 +54,56 @@ public class Grafo {
         return list.getFirst() == null;
     }
 
-    public void recorridoDFS(int v, boolean[] visited, String print) {
+    public void recorridoDFS(int v, boolean[] visited, Queue cola) {
         visited[v] = true;
 
-        Almacen aux = returnNodo(v);
-        System.out.println(aux.getName() + "\n" + aux.getLista().print());
+//        Almacen aux = returnNodo(v);
+//        System.out.println(aux.getName() + "\n" + aux.getLista().print());
+        cola.Encolar(v);
 
         for (int i = 0; i < getNumVerts(); i++) {
             if (v != i && !visited[i] && getMatAd()[v][i] != 0) {
-                recorridoDFS(i, visited, print);
+                recorridoDFS(i, visited, cola);
 
             }
         }
     }
 
-    public void profundidad() {
+    public String profundidad() {
 
         boolean visited[] = new boolean[getNumVerts()];
-        String recorrido[] = new String[getNumVerts()];
+        Queue cola=new Queue();
         String productsDFS = "";
         for (int i = 0; i < getNumVerts(); i++) {
             visited[i] = false;
         }
         for (int i = 0; i < getNumVerts(); i++) {
             if (!visited[i]) {
-                 recorridoDFS(i, visited, productsDFS);
+                 recorridoDFS(i, visited, cola);
             }
         }
+        for (int i = 0; i < getNumVerts(); i++) {
+            Almacen aux= returnNodo(cola.Despachar());
+            productsDFS+=aux.getName() +"\n"+ aux.getLista().print();
+        }
+        return productsDFS;
     }
 
-    public void recorridoBFS(){
+    public String recorridoBFS(){
         Queue cola= new Queue();
         boolean visitados []= new boolean[getNumVerts()];
         int v;
+        String print="";
         for (int i = 0; i < getNumVerts(); i++) {
             if (!visitados[i]) {
                 cola.Encolar(i);
                 visitados[i]=true;
                 while (!cola.isEmpty()) {                    
                     v=cola.Despachar();
-                    System.out.println(returnNodo(v).getName()+returnNodo(v).getLista().print());
+//                    System.out.println(returnNodo(v).getName()+returnNodo(v).getLista().print());
+                    print+=returnNodo(v).getName()+":\n"+returnNodo(v).getLista().print();
                     for (int j = 0; j < getNumVerts(); j++) {
-                        if (v!=i && v!=0 && !visitados[i]) {
+                        if (v!=j && getMatAd()[v][j]!=0 && !visitados[j]) {
                             cola.Encolar(j);
                             visitados[j]=true;
                         }
@@ -103,6 +111,7 @@ public class Grafo {
                 }
             }
         }
+        return print;
     }
     
     
