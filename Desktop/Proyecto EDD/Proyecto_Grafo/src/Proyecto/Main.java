@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package Proyecto;
+
 import org.graphstream.graph.*;
 import org.graphstream.graph.implementations.*;
 
@@ -17,20 +18,34 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        
-//        Archivotexto file = new Archivotexto();
-        Lista list= new Lista();
-//        Stocklist listastock= new Stocklist();
+
+        Archivotexto file = new Archivotexto();
+        Grafo lectura = file.leer_txt();
+
+        //lineas básicas para iniciar programa
+        //inicialización lista
+        Lista list = new Lista();
+
+        //inicialización grafo
         Grafo grafo = new Grafo(list);
+
+        //apertura primera GUI
         ImportMenu window = new ImportMenu(grafo);
         window.setVisible(true);
-//        Grafo lectura = file.leer_txt();
+
 //        System.out.println(lectura.printAdy());
 //        lectura.aumentarVerticesInsertar("F", listastock);
 //        System.out.println(lectura.printAdy());
-//        lectura.printGrafo();
-//        file.escribir_txt(lectura);
 
+//////Prueba actual de BFS DFS
+//        System.out.println(lectura.printGrafo());
+//        System.out.println("Recorrido BFS");
+//        lectura.profundidad();
+//        lectura.recorridoBFS();
+
+
+
+//        file.escribir_txt(lectura);
 //        Arraylist arreglo=new Arraylist(10);
 //        arreglo.insertBegin("estas", 1);
 //        arreglo.insertBegin("como", 2);

@@ -1,39 +1,49 @@
 /*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
  */
 package Proyecto;
 
 /**
  *
- * @author enriq
+ * @author <Joseph Ruiz EDD Unimet>
  */
-public class NodoCola<T> {
-   private T data;
-   private NodoCola siguiente;
+public class NodoCola {
+    private int dato;
+    private NodoCola next;
 
-    public NodoCola(T data) {
-        this.data = data;
-        this.siguiente = null;
+    public NodoCola(int dato) {
+        this.dato = dato;
+        this.next = next;
     }
 
-    public T getElemento() {
-        return data;
+    /**
+     * @return the dato
+     */
+    public int getDato() {
+        return dato;
     }
 
-    public void setElemento(T data) {
-        this.data = data;
+    /**
+     * @param dato the dato to set
+     */
+    public void setDato(int dato) {
+        this.dato = dato;
     }
 
-    public NodoCola getSiguiente() {
-        return siguiente;
+    /**
+     * @return the pnext
+     */
+    public NodoCola getNext() {
+        return next;
     }
 
-    public void setSiguiente(NodoCola siguiente) {
-        this.siguiente = siguiente;
+    /**
+     * @param pnext the pnext to set
+     */
+    public void setNext(NodoCola next) {
+        this.next = next;
     }
     
-    
-   
-   
 }

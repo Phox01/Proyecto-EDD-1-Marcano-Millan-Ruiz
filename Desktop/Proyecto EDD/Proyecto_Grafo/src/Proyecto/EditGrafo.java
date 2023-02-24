@@ -24,25 +24,17 @@ public class EditGrafo extends javax.swing.JFrame {
         initComponents();
         this.grafo = grafo;
         setLocationRelativeTo(null);
-        
-        
-        
-        
-        Almacen pointer =grafo.getLista().getFirst();
-        
-        
-        while (pointer!= null){
-            
-           option1.addItem(pointer.getName());
-           option2.addItem(pointer.getName());
 
-            pointer= pointer.getNext();
+        Almacen pointer = grafo.getLista().getFirst();
+
+        while (pointer != null) {
+
+            option1.addItem(pointer.getName());
+            option2.addItem(pointer.getName());
+
+            pointer = pointer.getNext();
         }
-        
-        
-        
-        
-        
+
     }
 
     /**
@@ -154,21 +146,12 @@ public class EditGrafo extends javax.swing.JFrame {
     }//GEN-LAST:event_showActionPerformed
 
     private void option1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_option1ActionPerformed
-//        output.setText("");
-//        String mensaje = "";
-//        mensaje = option1.getSelectedItem().toString();
-//        output.append(mensaje);
     }//GEN-LAST:event_option1ActionPerformed
 
     private void option2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_option2ActionPerformed
-//        String mensaje2 = "";
-//        mensaje2 = option2.getSelectedItem().toString();
-//        output.append(mensaje2);
     }//GEN-LAST:event_option2ActionPerformed
 
     private void inputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputActionPerformed
-//        String number = input.getText();
-//        output.append(number);
     }//GEN-LAST:event_inputActionPerformed
 
     private void adybuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adybuttonActionPerformed
@@ -179,9 +162,16 @@ public class EditGrafo extends javax.swing.JFrame {
         mensaje1 = option1.getSelectedItem().toString();
         mensaje2 = option2.getSelectedItem().toString();
         number = input.getText();
+        boolean value=false;
+        try {
+            Integer.parseInt(number);
+            value= true;
+        } catch (Exception e) {
+            value= false;
+            System.out.println("El valor que ingresa no es numérico");
+        }
 
-//        output.setText(mensaje1 + mensaje2 + number);
-        if (mensaje1.equals(mensaje2) || number.equals("0") || number.equals(" ") || number.equals("")) {
+        if (mensaje1.equals(mensaje2) || number.equals("0") || number.equals(" ") || number.equals("") || value==false) {
             JOptionPane.showMessageDialog(null, "No se puede hacer esa adyacencia");
             EditGrafo window2 = new EditGrafo(grafo);
             window2.show();
@@ -206,11 +196,11 @@ public class EditGrafo extends javax.swing.JFrame {
     }//GEN-LAST:event_addnodoActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        
-         OptionSelection window2 = new OptionSelection(grafo);
+
+        OptionSelection window2 = new OptionSelection(grafo);
         window2.show();
         this.setVisible(false);
-        
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
