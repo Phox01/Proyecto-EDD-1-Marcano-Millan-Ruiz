@@ -82,76 +82,7 @@ public class Grafo {
             }
         }
     }
-//    public int[] obtenerDisponibilidad() {
-////        int[] disponibles = new int[getNumVerts()];
-//        boolean[] visitados = new boolean[getNumVerts()];
-//        for (int i = 0; i < getNumVerts(); i++) {
-//            if (!visitados[i]) {
-//                int[] stock = new int[];
-//                visitarBFS(i, visitados, stock);
-//                for (int j = 0; j < getNumVerts(); j++) {
-//                    if (stock[j] > 0) {
-//                        disponibles[j] += stock[j];
-//                    }
-//                }
-//            }
-//        }
-//        return disponibles;
-//    }
-////    
-//    private static void visitarBFS(int i, boolean[] visitados, int[] stock) {
-//        Queue cola = new Queue();
-//        cola.Encolar(i);
-//        visitados[i] = true;
-//        while (!cola.isEmpty()) {
-//            int indiceActual = cola.Despachar();
-//            
-//            Producto[] productos = almacenes[ienndiceActual].getProductos();
-//            for (Producto producto : productos) {
-//                int indiceProducto = Producto.getIndiceProducto(producto.getNombre());
-//                stock[indiceProducto] += producto.getCantidad();
-//            }
-//            for (int j = 0; j < almacenes.length; j++) {
-//                if (almacenes[indiceActual] != almacenes[j] && !visitados[j]) {
-//                    cola.encolar(j);
-//                    visitados[j] = true;
-//                }
-//            }
-//        }
-//    }
 
-//    public String printBFS() {
-//        int [] paso= new int [getNumVerts()];
-//        paso[0]=0;
-//        String printing = "";
-//        printing += getLista().getFirst().getName() + "\n";
-//        int DFS=0;
-//        //for con interaccion=tamaño de lista 
-//        for (int i = 0; i < getNumVerts(); i++) {
-//            //for para recorrer cada adyacencia
-//            for (int j = 0; j < getMatAd().length; j++) {
-//                //for para recorrer el array passed y asegurarse si el nodo ya fue recorrido o no
-//                if (getMatAd()[DFS][j] != 0) {
-//                    for (int k = 0; k < paso.length; k++) {
-//                        if (paso[k]==j) {
-//                            break;
-//                        }else{
-//                            Almacen recorrido = returnNodo(j);
-//                            printing+=recorrido.getLista().print();
-//                            DFS=j;
-//                            int
-//                            break;
-//                        
-//                        }
-//                    }
-//                }
-//
-//            }
-//            
-//        }
-//        return printing;
-//    } 
-//    
     public void recorridoBFS(){
         Queue cola= new Queue();
         boolean visitados []= new boolean[getNumVerts()];
