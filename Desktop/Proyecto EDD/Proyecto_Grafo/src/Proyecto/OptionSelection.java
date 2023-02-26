@@ -16,6 +16,7 @@ public class OptionSelection extends javax.swing.JFrame {
 
     private Archivotexto archivo = new Archivotexto();
     static Grafo grafo;
+    private ShowGraph mostrarGrafo=new ShowGraph(grafo);
 
     /**
      * Creates new form GUI2
@@ -88,6 +89,11 @@ public class OptionSelection extends javax.swing.JFrame {
         jPanel1.add(editgrafo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, 130, 50));
 
         showgrafo.setText("Grafo");
+        showgrafo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                showgrafoActionPerformed(evt);
+            }
+        });
         jPanel1.add(showgrafo, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 240, 120, 50));
 
         recorridos.setText("Recorrer grafo");
@@ -141,6 +147,12 @@ public class OptionSelection extends javax.swing.JFrame {
         window4.show();
         this.dispose();
      }//GEN-LAST:event_recorridosActionPerformed
+
+    private void showgrafoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showgrafoActionPerformed
+        mostrarGrafo.ShowGraph(grafo);
+
+        
+    }//GEN-LAST:event_showgrafoActionPerformed
 
     /**
      * @param args the command line arguments

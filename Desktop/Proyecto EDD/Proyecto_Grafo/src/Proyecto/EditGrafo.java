@@ -158,18 +158,18 @@ public class EditGrafo extends javax.swing.JFrame {
         mensaje1 = option1.getSelectedItem().toString();
         mensaje2 = option2.getSelectedItem().toString();
         number = input.getText();
-        
+
         //Confirmar que es número
-        boolean value=false;
+        boolean value = false;
         try {
             Integer.parseInt(number);
-            value= true;
+            value = true;
         } catch (Exception e) {
-            value= false;
+            value = false;
             JOptionPane.showMessageDialog(null, "El valor que ingresa no es numérico");
         }
 
-        if (mensaje1.equals(mensaje2) || number.equals("0") || number.equals(" ") || number.equals("") || value==false) {
+        if (mensaje1.equals(mensaje2) || number.equals("0") || number.equals(" ") || number.equals("") || value == false) {
             JOptionPane.showMessageDialog(null, "No se puede hacer esa adyacencia");
             EditGrafo window2 = new EditGrafo(grafo);
             window2.show();
@@ -178,6 +178,7 @@ public class EditGrafo extends javax.swing.JFrame {
             grafo.AddArco(grafo.returnNodoInIndex(mensaje1), grafo.returnNodoInIndex(mensaje2), Integer.parseInt(number));
             JOptionPane.showMessageDialog(null, "Adyacencia hecha");
             output.setText(grafo.printAdy());
+            input.setText("");
 
         }
 
@@ -185,11 +186,31 @@ public class EditGrafo extends javax.swing.JFrame {
     }//GEN-LAST:event_adybuttonActionPerformed
 
     private void addnodoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addnodoActionPerformed
-        String name = inputnodo.getText();
-        grafo.aumentarVerticesInsertar(name, new Stocklist());
-        output.setText(grafo.printAdy());
-        option1.addItem(name);
-        option2.addItem(name);
+        try {
+            String name = inputnodo.getText();
+            Almacen aux = grafo.getLista().getFirst();
+            boolean value = true;
+            for (int i = 0; i < grafo.getNumVerts(); i++) {
+                if (aux.getName().toLowerCase().equals(name.toLowerCase())) {
+                    JOptionPane.showMessageDialog(null, "Ese Almacen ya está creado");
+                    inputnodo.setText("");
+                    value = false;
+                    break;
+                }
+                aux = aux.getNext();
+            }
+            if (value == true) {
+                grafo.aumentarVerticesInsertar(name, new Stocklist());
+                output.setText(grafo.printAdy());
+                option1.addItem(name);
+                option2.addItem(name);
+                inputnodo.setText("");
+
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error");
+        }
+
 
     }//GEN-LAST:event_addnodoActionPerformed
 
