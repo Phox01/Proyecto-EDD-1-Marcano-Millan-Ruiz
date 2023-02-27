@@ -28,7 +28,7 @@ public class EditGrafo extends javax.swing.JFrame {
         Almacen pointer = grafo.getLista().getFirst();
 
         while (pointer != null) {
-
+            //recorre el grafo con un nodo aux pointer y se agregan las opciones en el jcombobox
             option1.addItem(pointer.getName());
             option2.addItem(pointer.getName());
 
@@ -151,6 +151,7 @@ public class EditGrafo extends javax.swing.JFrame {
     }//GEN-LAST:event_inputActionPerformed
 
     private void adybuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adybuttonActionPerformed
+        //inicialización de variables
         String mensaje1 = "";
         String mensaje2 = "";
         String number = "";
@@ -168,13 +169,15 @@ public class EditGrafo extends javax.swing.JFrame {
             value = false;
             JOptionPane.showMessageDialog(null, "El valor que ingresa no es numérico");
         }
-
+        //verificar que el número es un int distinto de 0
         if (mensaje1.equals(mensaje2) || number.equals("0") || number.equals(" ") || number.equals("") || value == false) {
             JOptionPane.showMessageDialog(null, "No se puede hacer esa adyacencia");
+            //si es un string o un 0, recarga la ventana
             EditGrafo window2 = new EditGrafo(grafo);
             window2.show();
             this.dispose();
         } else {
+            //si sí es int distinto de 0, crea una ady, muestra la nueva ady en el grafo y vacía el input
             grafo.AddArco(grafo.returnNodoInIndex(mensaje1), grafo.returnNodoInIndex(mensaje2), Integer.parseInt(number));
             JOptionPane.showMessageDialog(null, "Adyacencia hecha");
             output.setText(grafo.printAdy());
@@ -187,9 +190,14 @@ public class EditGrafo extends javax.swing.JFrame {
 
     private void addnodoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addnodoActionPerformed
         try {
+
+            //inicialización de variables
+
             String name = inputnodo.getText();
             Almacen aux = grafo.getLista().getFirst();
             boolean value = true;
+            //verifica con un for si el nuevo nodo está creado, si está creado, value va a ser=false y no va a poder continuar la operación
+            //hasta que se vuelva a meter otro name
             for (int i = 0; i < grafo.getNumVerts(); i++) {
                 if (aux.getName().toLowerCase().equals(name.toLowerCase())) {
                     JOptionPane.showMessageDialog(null, "Ese Almacen ya está creado");
@@ -200,8 +208,10 @@ public class EditGrafo extends javax.swing.JFrame {
                 aux = aux.getNext();
             }
             if (value == true) {
+                //agrega el nuevo nodo y se imprime
                 grafo.aumentarVerticesInsertar(name, new Stocklist());
                 output.setText(grafo.printAdy());
+                //se agrega en los correspondidos jcombobox
                 option1.addItem(name);
                 option2.addItem(name);
                 inputnodo.setText("");
@@ -215,7 +225,7 @@ public class EditGrafo extends javax.swing.JFrame {
     }//GEN-LAST:event_addnodoActionPerformed
 
     private void salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salirActionPerformed
-
+        //cierra y abre la sig ventana
         OptionSelection window2 = new OptionSelection(grafo);
         window2.show();
         this.dispose();

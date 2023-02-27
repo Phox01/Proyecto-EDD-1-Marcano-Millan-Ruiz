@@ -35,7 +35,7 @@ public class ShowGraph {
         //se crea un pointer que recorre la lista del grafo y va mentiendo a la libreria los nodos con los nobres de los vertices
         Almacen pointer = grafo.getLista().getFirst();
         graph.setAttribute("ui.quality");
-//        graph.setAttribute("ui.stylesheet", "myStyleSheet");
+        //todo esto es el formato del grafo que nos funcionó para poder cargar la info del grafo
         graph.setAttribute("ui.stylesheet", "node {" 
    + " size:         100px, 30px;" + " stroke-width: 2px;" 
    + " stroke-color: rgb(180,180,180);" + " fill-mode:    none;" 
@@ -75,18 +75,12 @@ public class ShowGraph {
             }
                 graph.edges().forEach(e -> e.setAttribute("label", "" + (int) e.getNumber("length")));
         }
-
+        //añade los nombres de los nodos en el grafo gráfico 3d
         for (Node node : graph) {
             node.setAttribute("ui.label", node.getId());
 
         }
         
-        
-//        SpriteManager sman = new SpriteManager(graph);
-//        Sprite s = sman.addSprite("S1");
-//        s.setPosition(2, 1, 0);
-//        s.attachToNode("A");
-        //se muestra el grafo
     }
 
     

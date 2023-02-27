@@ -23,7 +23,7 @@ public class EditAlmacen extends javax.swing.JFrame {
         this.grafo = grafo;
         setLocationRelativeTo(null);
 
-        // Proceder a meter las vainas en la clase
+        // Proceder a meter los nombres en el combobox recorriendo el grafo con un pointer
         Almacen pointer = grafo.getLista().getFirst();
 
         while (pointer != null) {
@@ -64,6 +64,7 @@ public class EditAlmacen extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -113,7 +114,7 @@ public class EditAlmacen extends javax.swing.JFrame {
         jPanel1.add(numero1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 230, 70, -1));
 
         jLabel4.setText("NUEVO PRODUCTO");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 200, -1, -1));
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 180, -1, -1));
 
         Producto2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -169,10 +170,13 @@ public class EditAlmacen extends javax.swing.JFrame {
         jLabel1.setText("Sistemas Shop");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 20, 130, -1));
 
-        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Proyecto/pixels-video-games-wallpaper-preview.jpg"))); // NOI18N
-        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(-90, 0, 590, 350));
+        jLabel10.setText("agregar solo productos de otros almacenes");
+        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 200, 260, -1));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 500, -1));
+        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Proyecto/pixels-video-games-wallpaper-preview.jpg"))); // NOI18N
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(-90, 0, 610, 350));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 520, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -183,33 +187,36 @@ public class EditAlmacen extends javax.swing.JFrame {
     }//GEN-LAST:event_Almacenes2ActionPerformed
 
     private void okActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okActionPerformed
+        //nos aseguramos que no se rellenen los items del jcombobox de manera repetida
         Almacenes2.removeAllItems();
+        //inicialización de variables
+
         String opcion = Almacenes.getSelectedItem().toString();
         String texto = "";
 
         Almacen pointer = grafo.getLista().getFirst();
-
-//        NodoStock pointerstock= grafo.getLista().getFirst().
+        //se recorre el grafo con un nodo para encontrar la opción que se marcó
         while (!pointer.getName().equalsIgnoreCase(opcion)) {
 
             pointer = pointer.getNext();
         }
-
+        //
         texto = texto + Almacenes.getSelectedItem().toString() + "\n";
 
         if (!pointer.getLista().isEmpty()) {
             NodoStock pointer2 = pointer.getLista().getFirst();
             while (pointer2 != null) {
-
+                //guardar en el string todos los productos del almacen recorriéndolo con el pointer2
                 texto = texto + "producto: " + pointer2.getName() + "-->" + pointer2.getData() + "\n";
                 pointer2 = pointer2.getNext();
             }
+            //imprimir el almacen y sus respectivos productos en Areatexto
             AreaTexto.setText(texto);
 
             if (!pointer.getLista().isEmpty()) {
                 NodoStock pointer3 = pointer.getLista().getFirst();
                 while (pointer3 != null) {
-
+                    //añadir en el jcombobox Almacenes2 los nombres de los productos
                     Almacenes2.addItem(pointer3.getName());
 
                     pointer3 = pointer3.getNext();
@@ -218,7 +225,7 @@ public class EditAlmacen extends javax.swing.JFrame {
 
             }
 
-        }else{
+        } else {
             AreaTexto.setText("No hay nigún producto en el almacen");
         }
 
@@ -231,22 +238,14 @@ public class EditAlmacen extends javax.swing.JFrame {
     }//GEN-LAST:event_AlmacenesActionPerformed
 
     private void OK2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OK2ActionPerformed
+        //inicializar variables
         String opcion = Almacenes.getSelectedItem().toString();
         String texto = "";
+        String numero = "";
 
         //CONFIRMAR QUE ES UN NUMERO
-        String numero = "";
         numero = numero1.getText();
-//        
-//         if (Numero1.getText().equals("")) {
-//
-//            Numero = 0;
-//
-//        } else {
-//            Numero = Integer.parseInt(Numero1.getText());
-//        }
 
-        //Confirmar que es número
         boolean value = false;
         try {
             Integer.parseInt(numero);
@@ -264,6 +263,7 @@ public class EditAlmacen extends javax.swing.JFrame {
         }
         //Validando y arrojando que el valor no es numérico
         if (numero.equals("0") || numero.equals(" ") || numero.equals("") || value == false) {
+            //refrescar la ventana si el valor no es numérico
             JOptionPane.showMessageDialog(null, "No se puede hacer esa operación");
             EditAlmacen window2 = new EditAlmacen(grafo);
             window2.show();
@@ -271,18 +271,19 @@ public class EditAlmacen extends javax.swing.JFrame {
             //Si el valor sí es numérico, continuar
         } else {
             if (!pointer.getLista().isEmpty()) {
+                //se recorre el almacen respectivo hasta que sea la opción correspondiente
                 NodoStock pointer3 = pointer.getLista().getFirst();
                 while (!pointer3.getName().equalsIgnoreCase(Almacenes2.getSelectedItem().toString()) && pointer.getNext() != null) {
 
                     pointer3 = pointer3.getNext();
 
                 }
-
+                //se cambian los valores del objeto del almacen al agregar el número
                 pointer3.setData(pointer3.getData() + Integer.parseInt(numero));
             }
-
+            //se guarda la info en el string
             texto = texto + Almacenes.getSelectedItem().toString() + "\n";
-
+            //se recorre y se va guardando la info del producto y su respectiva cantidad y luego se imprime
             if (!pointer.getLista().isEmpty()) {
                 NodoStock pointer2 = pointer.getLista().getFirst();
                 while (pointer2 != null) {
@@ -311,7 +312,6 @@ public class EditAlmacen extends javax.swing.JFrame {
         // Confirmar que es un numero
 
 //        System.out.println("da");
-
         String opcion = Almacenes.getSelectedItem().toString();
         String producto = "";
         String texto = "";
@@ -335,8 +335,10 @@ public class EditAlmacen extends javax.swing.JFrame {
             //Si el valor sí es numérico, continuar
         } else {
             //confirmar que numero2 tiene que estar y ser numero
+            //confirmar que la opción escrita está entre los siguientes oarámetros
             if (Producto2.getText().toLowerCase().equalsIgnoreCase("pantalla") || Producto2.getText().toLowerCase().equalsIgnoreCase("ram") || Producto2.getText().toLowerCase().equalsIgnoreCase("grafica") || Producto2.getText().toLowerCase().equalsIgnoreCase("placa") || Producto2.getText().toLowerCase().equalsIgnoreCase("teclado") || Producto2.getText().toLowerCase().equalsIgnoreCase("mouse") || Producto2.getText().toLowerCase().equalsIgnoreCase("microfono") || Producto2.getText().toLowerCase().equalsIgnoreCase("audifono")) {
 //                System.out.println("si");
+                //igualar la variable producto al nombre que se le dé al producto
                 if (Producto2.getText().toLowerCase().equalsIgnoreCase("pantalla")) {
                     producto = "Pantalla";
 
@@ -360,15 +362,16 @@ public class EditAlmacen extends javax.swing.JFrame {
                 } else if (Producto2.getText().toLowerCase().equalsIgnoreCase("audifono")) {
                     producto = "Audifono";
                 }
-
+                //recorrer el grafo y comparar su nombre con la opcion
                 Almacen pointer = grafo.getLista().getFirst();
 
-                while (!pointer.getName().equalsIgnoreCase(opcion)&&pointer.getNext()!=null) {
+                while (!pointer.getName().equalsIgnoreCase(opcion) && pointer.getNext() != null) {
 
                     pointer = pointer.getNext();
                 }
 
 //                System.out.println("en almacen");
+                //recorrer los productos del almacen y compararlo con la opción producto
                 NodoStock pointer3 = pointer.getLista().getFirst();
                 while (pointer3 != null) {
 
@@ -381,30 +384,33 @@ public class EditAlmacen extends javax.swing.JFrame {
                 }
 
                 if (pointer3 == null) {
-
+                    //agregar el producto nuevo al almacen
                     pointer.getLista().InsertFinal(producto, Integer.parseInt(numero));
+                    //agregar opción al jcombobox almacenes2
                     Almacenes2.addItem(producto);
 
-                }else {
+                } else {
                     JOptionPane.showMessageDialog(null, "Este producto ya está en este almacen, por favor, utiliza la opción 'Agregar producto'");
                 }
-
+                
                 texto = texto + Almacenes.getSelectedItem().toString() + "\n";
+                //recorrer la lista del almacen e ir agregando al string para imprimirlo
                 NodoStock pointer2 = pointer.getLista().getFirst();
                 while (pointer2 != null) {
 
                     texto = texto + "producto: " + pointer2.getName() + "-->" + pointer2.getData() + "\n";
                     pointer2 = pointer2.getNext();
                 }
+                //imprimir el string
                 AreaTexto.setText(texto);
 
             } else {
                 JOptionPane.showMessageDialog(null, "Este producto no se encuentra en el sistema");
 
             }
-
+            //vaciar el input de numero2
             Numero2.setText("");
-
+            //vaciar el input de producto2
             Producto2.setText("");
 
         }
@@ -415,7 +421,7 @@ public class EditAlmacen extends javax.swing.JFrame {
     }//GEN-LAST:event_Producto2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-
+        //cerrar ventana y abrir sig ventana
         OptionSelection window2 = new OptionSelection(grafo);
         window2.show();
         this.dispose();
@@ -469,6 +475,7 @@ public class EditAlmacen extends javax.swing.JFrame {
     private javax.swing.JTextField Producto2;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

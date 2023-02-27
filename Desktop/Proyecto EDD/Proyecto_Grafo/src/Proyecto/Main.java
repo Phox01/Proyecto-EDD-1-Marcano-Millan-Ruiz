@@ -19,38 +19,22 @@ public class Main {
      */
     public static void main(String[] args) {
 
-        //lineas básicas para iniciar programa
-        //inicialización lista
+////        lineas básicas para iniciar programa
+////        inicialización lista
         Lista list = new Lista();
 
-        //inicialización grafo
+//        //inicialización grafo
         Grafo grafo = new Grafo(list);
 
-        //apertura primera GUI
+//        //apertura primera GUI
         ImportMenu window = new ImportMenu(grafo);
         window.setVisible(true);
-
-//        System.out.println(lectura.printAdy());
-//        lectura.aumentarVerticesInsertar("F", listastock);
-//        System.out.println(lectura.printAdy());
 
 //////Prueba actual de BFS DFS
 //        Archivotexto file = new Archivotexto();
 //        Grafo lectura = file.leer_txt();
-//        System.out.println(lectura.printGrafo());
-//        System.out.println("Recorrido BFS");
-//        lectura.profundidad();
-//        lectura.recorridoBFS();
-
-
-
-//        file.escribir_txt(lectura);
-//        Arraylist arreglo=new Arraylist(10);
-//        arreglo.insertBegin("estas", 1);
-//        arreglo.insertBegin("como", 2);
-//        arreglo.insertBegin("hola", 3);
-//        System.out.println(arreglo.printList());
-//        System.out.println(arreglo.getArray()[1].getName());
+//        Dijkstra shortest= new Dijkstra();
+//        int array=shortest.dijkstra(lectura.getMatAd(), 0, 1);
     }
 
 }

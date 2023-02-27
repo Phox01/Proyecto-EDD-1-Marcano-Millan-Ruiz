@@ -4,6 +4,8 @@
  */
 package Proyecto;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author enriq
@@ -21,7 +23,7 @@ public class GUIPedidos extends javax.swing.JFrame {
         this.grafo = grafo;
         setLocationRelativeTo(null);
 
-        // Proceder a meter las vainas en la clase
+        // Proceder a meter las opciones en el jcombobox
         Almacen pointer = grafo.getLista().getFirst();
 
         while (pointer != null) {
@@ -32,11 +34,6 @@ public class GUIPedidos extends javax.swing.JFrame {
         }
 
     }
-    
-    
-    
-    
-   
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -143,14 +140,12 @@ public class GUIPedidos extends javax.swing.JFrame {
     }//GEN-LAST:event_CantidadActionPerformed
 
     private void okActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okActionPerformed
-       
+
         String opcion = Almacenes.getSelectedItem().toString();
         String texto = "";
 
         Almacen pointer = grafo.getLista().getFirst();
-        
-//        NodoStock pointerstock= grafo.getLista().getFirst().
-        
+        //recorrer el nodo hasta que sea la opción
         while (!pointer.getName().equalsIgnoreCase(opcion)) {
 
             pointer = pointer.getNext();
@@ -159,6 +154,7 @@ public class GUIPedidos extends javax.swing.JFrame {
         texto = texto + Almacenes.getSelectedItem().toString() + "\n";
 
         if (!pointer.getLista().isEmpty()) {
+            //recorrer los productos del almacen para imprimirlos
             NodoStock pointer2 = pointer.getLista().getFirst();
             while (pointer2 != null) {
 
@@ -166,50 +162,51 @@ public class GUIPedidos extends javax.swing.JFrame {
                 pointer2 = pointer2.getNext();
             }
             AreaTexto.setText(texto);
-            
+
             if (!pointer.getLista().isEmpty()) {
                 NodoStock pointer3 = pointer.getLista().getFirst();
                 while (pointer3 != null) {
-
+                    //añadir al jcombobox
                     Almacenes2.addItem(pointer3.getName());
 
                     pointer3 = pointer3.getNext();
 
                 }
+            }
+
         }
-        
-        
-        }
-        
-        
+
+
     }//GEN-LAST:event_okActionPerformed
 
     private void pedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pedidoActionPerformed
-        
-        int Numero = 0;
-        
-        
-        
-        
-        if (Cantidad.getText().equals("")) {
+        //inicializar variables
+        String Numero = Cantidad.getText();
+        int numero=0;
 
-            Numero = 0;
+        //verificar si es numero
+        boolean value = true;
+        try {
+            Integer.parseInt(Numero);
+            value = true;
 
-        } else {
-            Numero = Integer.parseInt(Cantidad.getText());
+        } catch (Exception e) {
+            value = false;
+            JOptionPane.showMessageDialog(null, "El valor que ingresa no es numérico");
         }
-        
-        
+
+        if (value == true) {
+            numero =Integer.parseInt(Numero);
+        }
         String opcion = Almacenes.getSelectedItem().toString();
-        String texto="";
+        String texto = "";
         Almacen pointer = grafo.getLista().getFirst();
 
         while (!pointer.getName().equalsIgnoreCase(opcion)) {
 
             pointer = pointer.getNext();
         }
-        
-        
+
         if (!pointer.getLista().isEmpty()) {
             NodoStock pointer3 = pointer.getLista().getFirst();
             while (!pointer3.getName().equalsIgnoreCase(Almacenes2.getSelectedItem().toString())) {
@@ -217,18 +214,14 @@ public class GUIPedidos extends javax.swing.JFrame {
                 pointer3 = pointer3.getNext();
 
             }
-            
-            if (pointer3.getData()>= Numero){
 
-            pointer3.setData(pointer3.getData() - Numero);
-            }else{
-                
+            if (pointer3.getData() >= numero) {
+
+                pointer3.setData(pointer3.getData() - numero);
+            } else {
+                JOptionPane.showMessageDialog(null, "Mayor cantidad de la que hay en el almacen");
                 System.out.println("TOCA DIJSTRA");
-//                AQUI ES DONDE LUIS DEBE DE PONER SU FUNCION Y BUSCAR EN ALMACENES MAS CERCANO EL RPODUCTO
-                
-                
-                
-                
+
             }
         }
 
@@ -246,19 +239,17 @@ public class GUIPedidos extends javax.swing.JFrame {
         }
 
         Cantidad.setText("");
-        
-        
-        
-        
-        
+
+
     }//GEN-LAST:event_pedidoActionPerformed
 
     private void salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salirActionPerformed
-  OptionSelection window2 = new OptionSelection(grafo);
+        //cerrar ventana y abrir sig ventana
+        OptionSelection window2 = new OptionSelection(grafo);
         window2.show();
-        this.dispose();        
-        
-        
+        this.dispose();
+
+
     }//GEN-LAST:event_salirActionPerformed
 
     /**

@@ -100,6 +100,7 @@ public class ImportMenu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void ImportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ImportActionPerformed
+        //lee el txt y lo iguala con el grafo, creando así el grafo a partir del formato del txt (revisar la función leer_txt para más info)
         grafo = archivo.leer_txt();
 
     }//GEN-LAST:event_ImportActionPerformed

@@ -18,10 +18,9 @@ import javax.swing.JFileChooser;
  */
 public class Archivotexto {
 
-//    public void escribir_txt(Grafo grafo) {
-//        String clientes = "";
-////        if (!clientes) {
+//lee el txt que le mandes y lo transforma en un grafo
     public Grafo leer_txt() {
+        //inicialización de variables
         Lista almacenes = new Lista();
         Grafo grafo = new Grafo(almacenes);
         String line;
@@ -29,8 +28,6 @@ public class Archivotexto {
         JFileChooser archivo = new JFileChooser();
         archivo.showOpenDialog(null);
         File abre = archivo.getSelectedFile();
-//        String path = "C:\\Users\\User\\Desktop\\Proyecto EDD\\database.txt";
-//        File file = new File(path);
         try {
 
             FileReader fr = new FileReader(abre);
@@ -40,7 +37,7 @@ public class Archivotexto {
                     grafo_txt += line + "\n";
                 }
             }
-
+            //crea arrays para guardar en cada uno la información al dividirlo con el parámetro indicado en .split
             if (!"".equals(grafo_txt)) {
                 String[] grafo_split = grafo_txt.split("Rutas;\n");
 
@@ -51,12 +48,14 @@ public class Archivotexto {
 
                         String[] almacen = string_almacenes[i].split("\n");
                         String[] nameAlmacen = almacen[0].split(" ");
+                        //inserta la info en la lista del stock
                         for (int j = 0; j < almacen.length; j++) {
                             if (j != 0) {
                                 String[] item = almacen[j].split(",");
                                 stock.InsertFinal(item[0], Integer.parseInt(item[1]));
                             }
                         }
+                        //inserta toda la info en la lista de almacenes
                         almacenes.InsertFinal(nameAlmacen[1], stock);
                     }
 
@@ -64,6 +63,7 @@ public class Archivotexto {
                 String[] rutas = grafo_split[1].split("\n");
                 Grafo grafoTemp= new Grafo(almacenes);
                 grafo = grafoTemp;
+                //inserta la info como parámetro en la función addarco, lo cual crea la adyacencia
                 for (int i = 0; i < rutas.length; i++) {
                     String[] ruta = rutas[i].split(",");
                     grafo.AddArco(grafo.returnNodoInIndex(ruta[0]), grafo.returnNodoInIndex(ruta[1]), Integer.parseInt(ruta[2]));
@@ -81,6 +81,7 @@ public class Archivotexto {
     }
 
     public void escribir_txt(Grafo grafo) {
+        //iniciar variables
         JFileChooser archivo = new JFileChooser();
         archivo.showSaveDialog(null);
         File guarda = archivo.getSelectedFile();
@@ -89,7 +90,7 @@ public class Archivotexto {
         if (!grafo.isEmpty()) {
             
             Almacen aux = grafo.getLista().getFirst();
-
+            //crea un pointer que recorre el grafo y añade la info en el string creado
             for (int i = 0; i < grafo.getLista().getSize(); i++) {
                 almacenes_actuales += "Almacen "+ aux.getName() + "\n";
                 NodoStock aux2 = aux.getLista().getFirst();
@@ -108,14 +109,15 @@ public class Archivotexto {
                 aux = aux.getNext();
 
             }
+            //mete en el string con el metodo printgrafo, el cual ya le pone el formato debido a las adyacencias entre dos nodos
             rutas_actuales+=grafo.printGrafo();
             
         }
         String total = almacenes_actuales + rutas_actuales;
         try {
+            //escribe en el txt
             PrintWriter pw = new PrintWriter(guarda);
             pw.print(total);
-            //pw.append(JOptionPane.showInputDialog("Item name") + "," + JOptionPane.showInputDialog("Item quantity") + "\n");
             pw.close();
             JOptionPane.showMessageDialog(null, "guardado exitoso");
 

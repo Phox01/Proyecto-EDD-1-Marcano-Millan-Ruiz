@@ -9,6 +9,7 @@ package Proyecto;
  *
  * @author <Joseph Ruiz EDD Unimet>
  */
+//ventana para confirmar si se quiere comenzar desde 0 el grafo
 public class GUIConfirmation extends javax.swing.JFrame {
 
     static Grafo grafo;
@@ -79,13 +80,15 @@ public class GUIConfirmation extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void SiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SiActionPerformed
+        //inicia la sig ventana y cierra esta
         OptionSelection window2 = new OptionSelection(grafo);
         window2.show();
-        this.setVisible(false);
+        this.dispose();
     }//GEN-LAST:event_SiActionPerformed
 
     private void NoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NoActionPerformed
-        this.setVisible(false);
+        //vuelve a la ventana de import
+        this.dispose();
     }//GEN-LAST:event_NoActionPerformed
 
     /**

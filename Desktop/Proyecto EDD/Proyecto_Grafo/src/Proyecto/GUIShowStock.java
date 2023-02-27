@@ -88,17 +88,20 @@ public class GUIShowStock extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salirActionPerformed
+        //cierra esta ventana y abre la sig
         OptionSelection window2 = new OptionSelection(grafo);
         window2.show();
         this.dispose();
     }//GEN-LAST:event_salirActionPerformed
 
     private void DFSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DFSActionPerformed
+        //imprime con respecto al correspondido método
         output.setText("");
         output.setText(grafo.profundidad());
     }//GEN-LAST:event_DFSActionPerformed
 
     private void BFSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BFSActionPerformed
+        //imprime con respecto al correspondido método
         output.setText("");
         output.setText(grafo.recorridoBFS());
     }//GEN-LAST:event_BFSActionPerformed

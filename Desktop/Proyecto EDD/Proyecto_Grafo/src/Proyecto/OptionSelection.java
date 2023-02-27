@@ -113,10 +113,12 @@ public class OptionSelection extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void exportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exportActionPerformed
+        //exporta grafo a un txt
         archivo.escribir_txt(grafo);
     }//GEN-LAST:event_exportActionPerformed
 
     private void editalmacenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editalmacenActionPerformed
+        //abre sig ventana y cierra esta
         EditAlmacen window2 = new EditAlmacen(grafo);
         window2.show();
         this.dispose();
@@ -125,7 +127,7 @@ public class OptionSelection extends javax.swing.JFrame {
     }//GEN-LAST:event_editalmacenActionPerformed
 
     private void pedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pedidoActionPerformed
-
+//abre sig ventana y cierra esta
         GUIPedidos window3 = new GUIPedidos(grafo);
         window3.show();
         this.dispose();
@@ -134,7 +136,7 @@ public class OptionSelection extends javax.swing.JFrame {
     }//GEN-LAST:event_pedidoActionPerformed
 
     private void editgrafoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editgrafoActionPerformed
-
+//abre sig ventana y cierra esta
         EditGrafo window3 = new EditGrafo(grafo);
         window3.show();
         this.dispose();
@@ -143,12 +145,14 @@ public class OptionSelection extends javax.swing.JFrame {
     }//GEN-LAST:event_editgrafoActionPerformed
 
     private void recorridosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_recorridosActionPerformed
+       //abre sig ventana y cierra esta
         GUIShowStock window4 = new GUIShowStock(grafo);
         window4.show();
         this.dispose();
      }//GEN-LAST:event_recorridosActionPerformed
 
     private void showgrafoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showgrafoActionPerformed
+       //muestra el grafo a partir de la info que contiene. Se usa la librería Graphstream
         mostrarGrafo.ShowGraph(grafo);
 
         
