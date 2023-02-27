@@ -30,7 +30,7 @@ public class Main {
         ImportMenu window = new ImportMenu(grafo);
         window.setVisible(true);
 
-//////Prueba actual de BFS DFS
+////Prueba actual de BFS DFS
 //        Archivotexto file = new Archivotexto();
 //        Grafo lectura = file.leer_txt();
 //        Dijkstra shortest= new Dijkstra();
